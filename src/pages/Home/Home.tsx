@@ -1,7 +1,9 @@
 import Header from "../../Components/header/Header";
-import {AboutSectionWrapper, HeroContent, HeroWrapper, RegisterSectionWrapper, SectionCardsWrapper, SectionTitle} from "./style";
-import studentsImage from "../../assets/students-img.png";
+import {AboutSectionWrapper, DoubtsFormSection, HeroContent, HeroWrapper, RegisterSectionWrapper, SectionCardsWrapper, SectionTitle} from "./style";
 import Button from "../../Components/buttonHeader/Button";
+
+import studentsImage from "../../assets/students-img.png";
+import codeGirl from "../../assets/codegirl.png";
 
 export default function Home() {
   return (
@@ -62,6 +64,21 @@ export default function Home() {
           </div>
         </div>
       </AboutSectionWrapper>
+      <DoubtsFormSection>
+        <div>
+          <img
+            src={codeGirl}
+            alt="Imagem ilustrativa de uma mulher usando o computador, com alguns quadros referentes a computação e linguagens de texto, esilo e programação"
+          />
+          <form>
+            <SectionTitle>Ficou com alguma dúvida?</SectionTitle>
+            <input type="text" placeholder="Seu nome" />
+            <input type="email" placeholder="Seu email" />
+            <textarea placeholder="Mensagem" />
+            <Button>Enviar</Button>
+          </form>
+        </div>
+      </DoubtsFormSection>
     </>
   );
 }

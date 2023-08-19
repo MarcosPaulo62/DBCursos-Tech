@@ -4,9 +4,9 @@ export const ButtonWrapper = styled.button`
   all: unset;
   align-items: center;
   background-color: ${({theme}) => theme.color.darkBlue};
-  border-radius: 12px;
-  color: inherit;
+  border-radius: 0.75rem;
   cursor: pointer;
+  color: ${({theme}) => theme.color.white};
   display: flex;
   justify-content: center;
   min-height: 2.5rem;

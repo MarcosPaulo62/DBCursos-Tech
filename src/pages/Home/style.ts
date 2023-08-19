@@ -74,20 +74,23 @@ export const SectionTitle = styled.h2`
 export const RegisterSectionWrapper = styled.section`
   background-color: ${({theme}) => theme.color.blue};
   color: ${({theme}) => theme.color.white};
-  display: grid;
+  display: flex;
   gap: 3.5rem;
-  grid-template-columns: 612px 1fr;
-  padding: 4.75rem 12rem 9.75rem 6rem;
+  min-height: 44rem;
+  padding: 4.75rem 0 9.75rem 6rem;
+
+  img {
+    width: 40%;
+  }
 
   div {
     align-items: flex-end;
-    align-self: flex-end;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    height: 80%;
-    justify-content: space-between;
+    gap: 4rem;
+    padding-top: 4rem;
     text-align: end;
+    width: 40%;
 
     h3 {
       font-size: 3rem;
@@ -107,7 +110,7 @@ export const AboutSectionWrapper = styled.section`
 
   .about-container {
     background-color: ${({theme}) => theme.color.darkBlue};
-    border-radius: 16px;
+    border-radius: 1rem;
     display: flex;
     max-width: 80%;
     margin: 0 auto;
@@ -116,7 +119,7 @@ export const AboutSectionWrapper = styled.section`
 
     .about-content {
       color: ${({theme}) => theme.color.white};
-      height: 21.25rem;
+      min-height: 21.25rem;
       padding-top: 3rem;
 
       &:nth-child(2) {
@@ -131,6 +134,66 @@ export const AboutSectionWrapper = styled.section`
         font-size: 1.25rem;
         font-weight: 600;
         margin-bottom: 2rem;
+      }
+    }
+  }
+`;
+
+export const DoubtsFormSection = styled.section`
+  background-color: ${({theme}) => theme.color.blue};
+  padding: 3.5rem 0;
+  margin-top: 8rem;
+
+  div {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 80%;
+
+    img {
+      width: 45%;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      width: 40%;
+
+      h2 {
+        color: ${({theme}) => theme.color.white};
+        font-weight: 700;
+        margin: 0 0 0.5rem 0;
+        padding: 0;
+      }
+
+      input,
+      textarea {
+        background-color: ${({theme}) => theme.color.white};
+        border: 1px solid #504c4c;
+        border-radius: 0.5rem;
+        color: #504c4c;
+        font-family: "Inter", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 300;
+        outline: none;
+        padding: 0 2rem;
+      }
+
+      input {
+        height: 4.5rem;
+      }
+
+      textarea {
+        columns: 36;
+        padding-top: 1.5rem;
+        height: 13.125rem;
+        resize: none;
+      }
+
+      button {
+        align-self: flex-end;
       }
     }
   }

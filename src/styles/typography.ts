@@ -67,7 +67,7 @@ export const StyledTag = styled.p<iStyledTag>`
   align-items: center;
   justify-content: center;
   color: ${({theme}) => theme.color.black};
-  border-radius: 6px;
+  border-radius: 0.425rem;
 
   height: 2rem;
 
