@@ -81,7 +81,7 @@ export const AuthenticationCardWrapper = styled.div`
       .icon {
         position: absolute;
         top: 1.3rem;
-        left: 1.38rem
+        left: 1.38rem;
       }
       .eye {
         position: absolute;
@@ -90,7 +90,7 @@ export const AuthenticationCardWrapper = styled.div`
         cursor: pointer;
         transition: all 0.3s ease-in;
         &:hover {
-            transform: scale(1.1);
+          transform: scale(1.1);
         }
       }
     }
@@ -98,9 +98,13 @@ export const AuthenticationCardWrapper = styled.div`
       color: ${({ theme }) => theme.color.white};
       background-color: #5ab55e;
       border-radius: 0.5rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 4.32rem;
       font-size: 1.5rem;
       font-weight: 600;
-      padding: 1.3rem 0;
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
       cursor: pointer;
       transition: opacity 0.3s ease-in;

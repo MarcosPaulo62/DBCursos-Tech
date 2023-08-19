@@ -1,8 +1,9 @@
-import { AuthenticationCardWrapper } from "./styles";
-import { useForm } from "react-hook-form";
+import CircularProgress from "@mui/material/CircularProgress";
+import { Eye, EyeSlash, Lock, User } from "@phosphor-icons/react";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { Lock, User, Eye, EyeSlash } from "@phosphor-icons/react";
+import { AuthenticationCardWrapper } from "./styles";
 
 export interface IFormAuthValues {
   login: string;
@@ -20,8 +21,9 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLogin, setIsLogin] = useState(isLoginPage);
   const [role, setRole] = useState("aluno");
+  const [isLoading, setIsLoading] = useState(false);
 
-  function onSubmit(userData: IFormAuthValues) {
+  async function onSubmit(userData: IFormAuthValues) {
     if (!userData.login.trim() || !userData.senha.trim()) {
       toast.warning("É necessário preencher todos os campos!", {
         theme: "dark",
@@ -44,8 +46,92 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
         });
         return;
       }
+
+      try {
+        setIsLoading(true);
+
+        const response = await fetch(
+          "http://vemser-dbc.dbccompany.com.br:39000/j3ffn/jenkins-hml/acesso/cadastrar",
+          {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              login: userData.login,
+              senha: userData.senha,
+            }),
+          }
+        );
+
+        if (response.status === 500) {
+          toast.error("Usuário já cadastrado!", {
+            theme: "dark",
+            position: "top-center",
+          });
+          return;
+        }
+
+        toast.success("Cadastro realizado com sucesso!", {
+          theme: "dark",
+          position: "top-center",
+        });
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    } else {
+      try {
+        setIsLoading(true);
+
+        const response = await fetch(
+          "http://vemser-dbc.dbccompany.com.br:39000/j3ffn/jenkins-hml/acesso",
+          {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              login: userData.login,
+              senha: userData.senha,
+            }),
+          }
+        );
+
+        if (response.status === 403) {
+          toast.error("Usuário e/ou senha incorreto(s)!", {
+            theme: "dark",
+            position: "top-center",
+          });
+          return;
+        }
+
+        if (response.status === 500) {
+          toast.error("Algo inesperado aconteceu!", {
+            theme: "dark",
+            position: "top-center",
+          });
+          return;
+        }
+
+        const data = await response.text();
+
+        localStorage.setItem("token", data);
+        localStorage.setItem("cargo", role);
+
+        toast.success("Login realizado com sucesso!", {
+          theme: "dark",
+          position: "top-center",
+        });
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
     }
   }
+
   return (
     <AuthenticationCardWrapper>
       <div className="page-buttons">
@@ -148,7 +234,13 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
           </div>
         </div>
         <button className="submit" type="submit">
-          {isLogin ? "ENTRAR" : "CRIAR CONTA"}
+          {isLoading ? (
+            <CircularProgress className="loading" />
+          ) : isLogin ? (
+            "ENTRAR"
+          ) : (
+            "CRIAR CONTA"
+          )}
         </button>
       </form>
     </AuthenticationCardWrapper>

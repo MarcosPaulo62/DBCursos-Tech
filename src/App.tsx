@@ -1,5 +1,3 @@
-import { Login } from "./pages/Login/Login";
-import { SignUp } from "./pages/SignUp/SignUp";
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { ColorsTheme } from "./styles/global";
@@ -10,8 +8,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        {/* <SignUp /> */}
-        <Login />
+        
       </div>
     </ThemeProvider>
   );
