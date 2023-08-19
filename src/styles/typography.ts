@@ -39,7 +39,7 @@ export const StyledSpan = styled.span<iStyledSpan>`
     strong, b {
         font-weight: 700;
     }
-    color: ${({theme}) => theme.color.black};
+    color: ${({theme}) => theme.color.white};
 
     ${({fontSize}) => {
         switch (fontSize) {
@@ -62,24 +62,20 @@ export const StyledSpan = styled.span<iStyledSpan>`
 
 
 `
-interface iStyledTag{
-    backgroundColor: 'blue' | 'red' ;
-}
 
 
-export const StyledTag = styled.p<iStyledTag>`
+
+export const StyledTag = styled.p`
     font-family: 'Inter', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 400;
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: ${({theme}) => theme.color.black};
-    border-radius: 6px;
+    text-align: center;
+    line-height: 1.25rem;
+    width: 17.1875rem;
+    height: 10.375rem;
+    color: ${({theme}) => theme.color.white};
 
-    height: 2rem;
-
-    padding: 0 1.5rem;
   
 
 `
