@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import {createGlobalStyle} from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     *{
@@ -33,15 +33,13 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const ColorsTheme = {
-  
-    color: {
-    blue: '#1C58F8',
-    white: '#FFFFFF',
-    darkBlue: '#070F26',
-    black: '#000000',
-    offWhite: '#F5F5F5',
-    error: '#F34F50',
-    success: '#36C76C',
-}
+  color: {
+    blue: "#1C58F8",
+    white: "#FFFFFF",
+    darkBlue: "#070F26",
+    black: "#000000",
+    offWhite: "#F5F5F5",
+    error: "#F34F50",
+    success: "#36C76C",
+  },
 };
-

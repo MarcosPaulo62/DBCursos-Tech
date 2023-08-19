@@ -6,7 +6,7 @@ export const NavbarWrapper = styled.nav`
   gap: 1.25rem;
 
   a {
-    color: #fff;
+    color: ${({theme}) => theme.color.white};
     font-size: 1rem;
     font-weight: 700;
     text-transform: uppercase;

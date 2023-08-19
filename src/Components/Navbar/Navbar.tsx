@@ -1,5 +1,5 @@
-import Button from "../ButtonHeader/Button";
-import Navlink from "../Navlink/Navlink";
+import Button from "../buttonHeader/Button";
+import Navlink from "../navlink/Navlink";
 import {NavbarWrapper} from "./style";
 
 export default function Navbar() {

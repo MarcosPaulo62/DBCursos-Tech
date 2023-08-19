@@ -1,6 +1,6 @@
-import Logo from "../Logo/Logo";
-import Navbar from "../Navbar/Navbar";
-import Navlink from "../Navlink/Navlink";
+import Logo from "../logo/Logo";
+import Navbar from "../navbar/Navbar";
+import Navlink from "../navlink/Navlink";
 import {HeaderWrapper} from "./style";
 
 export default function Header() {
