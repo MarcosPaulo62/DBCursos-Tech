@@ -25,7 +25,7 @@ export default function Home() {
         </HeroContent>
       </HeroWrapper>
       <SectionCardsWrapper>
-        <SectionTitle>Cursos populares</SectionTitle>
+        <SectionTitle>Diferenciais da DBCursos Tech</SectionTitle>
       </SectionCardsWrapper>
       <RegisterSectionWrapper>
         <img src={studentsImage} alt="Imagem ilustrativa de 5 pessoas se formando em um curso" />
