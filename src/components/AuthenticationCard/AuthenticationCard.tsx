@@ -2,6 +2,7 @@ import { AuthenticationCardWrapper } from "./styles";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { Lock, User, Eye, EyeSlash } from "@phosphor-icons/react";
 
 export interface IFormAuthValues {
   login: string;
@@ -49,6 +50,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
     <AuthenticationCardWrapper>
       <div className="page-buttons">
         <button
+          className={isLogin ? "onfocus" : ""}
           onClick={() => {
             setIsLogin(true);
           }}
@@ -56,6 +58,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
           ENTRAR
         </button>
         <button
+          className={!isLogin ? "onfocus" : ""}
           onClick={() => {
             setIsLogin(false);
           }}
@@ -70,6 +73,9 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
             onClick={() => {
               setRole("aluno");
             }}
+            className={
+              role === "aluno" ? "firstRoleButton onrole" : "firstRoleButton"
+            }
           >
             ALUNO
           </button>
@@ -78,6 +84,11 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
             onClick={() => {
               setRole("professor");
             }}
+            className={
+              role === "professor"
+                ? "secondRoleButton onrole"
+                : "secondRoleButton"
+            }
           >
             PROFESSOR
           </button>
@@ -86,29 +97,59 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
             onClick={() => {
               setRole("admin");
             }}
+            className={
+              role === "admin" ? "thirdRoleButton onrole" : "thirdRoleButton"
+            }
           >
             ADMIN
           </button>
         </div>
-        <input
-          type="text"
-          id="login"
-          {...register("login")}
-          placeholder="Username"
-        />
-        <input
-          type={showPassword ? "text" : "password"}
-          id="password"
-          {...register("senha")}
-          placeholder="Senha"
-        />
-        <input
-          type={showConfirmPassword ? "text" : "password"}
-          id="confirm-password"
-          {...register("confirmarSenha")}
-          placeholder="Confirmar senha"
-        />
-        <button type="submit">{isLogin ? "ENTRAR" : "CRIAR CONTA"}</button>
+        <div className="input-container">
+          <input
+            type="text"
+            id="login"
+            {...register("login")}
+            placeholder="Username"
+          />
+          <User className="icon" size={32} />
+        </div>
+        <div className="input-container">
+          <input
+            type={showPassword ? "text" : "password"}
+            id="password"
+            {...register("senha")}
+            placeholder="Senha"
+          />
+          <Lock className="icon" size={32} />
+          <div
+            className="eye"
+            onClick={() => {
+              setShowPassword(!showPassword);
+            }}
+          >
+            {showPassword ? <Eye size={32} /> : <EyeSlash size={32} />}
+          </div>
+        </div>
+        <div className={isLogin ? "displayNone" : "input-container"}>
+          <input
+            type={showConfirmPassword ? "text" : "password"}
+            id="confirm-password"
+            {...register("confirmarSenha")}
+            placeholder="Confirmar senha"
+          />
+          <Lock className="icon" size={32} />
+          <div
+            className="eye"
+            onClick={() => {
+              setShowConfirmPassword(!showConfirmPassword);
+            }}
+          >
+            {showConfirmPassword ? <Eye size={32} /> : <EyeSlash size={32} />}
+          </div>
+        </div>
+        <button className="submit" type="submit">
+          {isLogin ? "ENTRAR" : "CRIAR CONTA"}
+        </button>
       </form>
     </AuthenticationCardWrapper>
   );

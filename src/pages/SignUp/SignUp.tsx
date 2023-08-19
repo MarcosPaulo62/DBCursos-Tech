@@ -1,10 +1,10 @@
 import { AuthenticationCard } from "../../components/AuthenticationCard/AuthenticationCard";
-import { SignUpWrapper } from "./styles";
+import { SignUpAndLoginWrapper } from "./styles";
 
 export function SignUp() {
   return (
-    <SignUpWrapper>
+    <SignUpAndLoginWrapper>
       <AuthenticationCard isLoginPage={false} />
-    </SignUpWrapper>
+    </SignUpAndLoginWrapper>
   );
 }
