@@ -4,11 +4,10 @@ import { ColorsTheme } from "./styles/global";
 
 function App() {
   const [theme, setTheme] = useState(ColorsTheme);
-  
+
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">        
-      </div>
+      <div className="App"></div>
     </ThemeProvider>
   );
 }

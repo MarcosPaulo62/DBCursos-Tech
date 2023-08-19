@@ -80,7 +80,6 @@ export const StyledTag = styled.p<iStyledTag>`
     height: 2rem;
 
     padding: 0 1.5rem;
-
   
 
 `
