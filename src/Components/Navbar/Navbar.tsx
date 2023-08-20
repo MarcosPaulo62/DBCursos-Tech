@@ -7,7 +7,6 @@ export default function Navbar() {
     <>
       <NavbarWrapper>
         <Navlink to="/">Home</Navlink>
-        <Navlink to="/">Sobre</Navlink>
         <Navlink to="/">
           <Button>Entrar</Button>
         </Navlink>
