@@ -7,8 +7,6 @@ import {toast} from "react-toastify";
 
 import studentsImage from "../../assets/students-img.png";
 import codeGirl from "../../assets/codegirl.png";
-import LandingPageCard from "../../Components/landing-page-card/LandingPageCard";
-import Footer from "../../Components/footer/Footer";
 
 interface iFormContact {
   name: string;
@@ -52,7 +50,6 @@ export default function Home() {
       </HeroWrapper>
       <SectionCardsWrapper>
         <SectionTitle>Diferenciais da DBCursos Tech</SectionTitle>
-        <LandingPageCard />
       </SectionCardsWrapper>
       <RegisterSectionWrapper>
         <img src={studentsImage} alt="Imagem ilustrativa de 5 pessoas se formando em um curso" />
@@ -106,7 +103,6 @@ export default function Home() {
           </form>
         </div>
       </DoubtsFormSection>
-      <Footer />
     </>
   );
 }

@@ -1,5 +1,4 @@
 import {Link} from "react-router-dom";
-import {LinkWrapper} from "./style";
 
 interface iLink {
   to: string;
@@ -7,11 +6,5 @@ interface iLink {
 }
 
 export default function Navlink({to, children}: iLink) {
-  return (
-    <LinkWrapper>
-      <Link to={to} className="nav-link">
-        {children}
-      </Link>
-    </LinkWrapper>
-  );
+  return <Link to={to}>{children}</Link>;
 }
