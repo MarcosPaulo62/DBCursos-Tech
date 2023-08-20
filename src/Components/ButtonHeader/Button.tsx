@@ -2,7 +2,7 @@ import {iChildren} from "../../utils/interface";
 import {ButtonWrapper} from "./style";
 
 interface iButton {
-  type?: 'button' | 'submit' | 'reset';
+  type?: "button" | "submit" | "reset";
 }
 
 export default function Button(props: iChildren & iButton) {

@@ -23,10 +23,9 @@ export default function Home() {
   } = useForm<iFormContact>();
 
   function onSubmit(data: iFormContact) {
-    console.log(data);
     toast.success("Formulário enviado com sucesso!", {
-      position: "top-center",
       theme: "dark",
+      position: "top-center",
     });
     reset();
   }
