@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { AuthenticationCardWrapper } from "./styles";
 import { useNavigate } from "react-router-dom";
+import { API_KEY } from "../../utils/API";
 
 export interface IFormAuthValues {
   login: string;
@@ -53,7 +54,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
         setIsLoading(true);
 
         const response = await fetch(
-          "http://vemser-dbc.dbccompany.com.br:39000/j3ffn/jenkins-hml/acesso/cadastrar",
+          `${API_KEY}/acesso/cadastrar`,
           {
             method: "POST",
             headers: {
@@ -90,7 +91,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
         setIsLoading(true);
 
         const response = await fetch(
-          "http://vemser-dbc.dbccompany.com.br:39000/j3ffn/jenkins-hml/acesso",
+          `${API_KEY}/acesso`,
           {
             method: "POST",
             headers: {

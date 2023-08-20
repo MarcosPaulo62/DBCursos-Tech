@@ -10,7 +10,7 @@ export interface iNavbarhDashboard {
 
 export function NavbarDashboard({ role }: iNavbarhDashboard) {
   const [page, setPage] = useState("home");
-  const [userRole, setUserRole] = useState(role);
+  const userRole = role;
   const navigate = useNavigate();
 
   function returnGreeting(role: string) {
