@@ -1,11 +1,30 @@
-import Header from "../../Components/header/Header";
 import {AboutSectionWrapper, DoubtsFormSection, HeroContent, HeroWrapper, RegisterSectionWrapper, SectionCardsWrapper, SectionTitle} from "./style";
+import Header from "../../Components/header/Header";
 import Button from "../../Components/buttonHeader/Button";
+
+import {useForm} from "react-hook-form";
+import {toast} from "react-toastify";
 
 import studentsImage from "../../assets/students-img.png";
 import codeGirl from "../../assets/codegirl.png";
 
+interface iFormContact {
+  name: string;
+  email: string;
+  message: string;
+}
+
 export default function Home() {
+  const {handleSubmit, reset, register} = useForm<iFormContact>();
+
+  function onSubmit(data: iFormContact) {
+    toast.success("Formulário enviado com sucesso!", {
+      position: "top-center",
+      theme: "dark",
+    });
+    reset();
+  }
+
   return (
     <>
       <Header />
@@ -70,12 +89,12 @@ export default function Home() {
             src={codeGirl}
             alt="Imagem ilustrativa de uma mulher usando o computador, com alguns quadros referentes a computação e linguagens de texto, esilo e programação"
           />
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <SectionTitle>Ficou com alguma dúvida?</SectionTitle>
-            <input type="text" placeholder="Seu nome" />
-            <input type="email" placeholder="Seu email" />
-            <textarea placeholder="Mensagem" />
-            <Button>Enviar</Button>
+            <input type="text" placeholder="Seu nome" id="name" {...register("name", {required: true})} />
+            <input type="email" placeholder="Seu email" id="email" {...register("email", {required: true})} />
+            <textarea placeholder="Mensagem" id="message" {...register("message", {required: true})} />
+            <Button type="submit">Enviar</Button>
           </form>
         </div>
       </DoubtsFormSection>

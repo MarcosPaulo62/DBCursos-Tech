@@ -1,10 +1,16 @@
 import {iChildren} from "../../utils/interface";
 import {ButtonWrapper} from "./style";
 
-export default function Button({children}: iChildren) {
+interface iButton {
+  type?: 'button' | 'submit' | 'reset';
+}
+
+export default function Button(props: iChildren & iButton) {
+  const {children, type} = props;
+
   return (
     <>
-      <ButtonWrapper>{children}</ButtonWrapper>
+      <ButtonWrapper type={type}>{children}</ButtonWrapper>
     </>
   );
 }
