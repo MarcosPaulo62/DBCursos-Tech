@@ -7,9 +7,11 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         font-family: 'Inter', sans-serif;
     }
-    
-    
 
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+    
     button {
         cursor: pointer;
         background: transparent;
