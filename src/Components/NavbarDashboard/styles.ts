@@ -9,6 +9,8 @@ export const NavbarDashboardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
 
   .logo {
     width: 5rem;

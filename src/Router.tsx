@@ -3,6 +3,9 @@ import {Login} from "./pages/login/Login";
 import {SignUp} from "./pages/signUp/SignUp";
 import {Dashboard} from "./pages/dashboard/Dashboard";
 import Home from "./pages/home/Home";
+import { DashboardAlunos } from "./pages/dashboardAlunos/DashboardAlunos";
+import { DashboardCursos } from "./pages/dashboardCursos/DashboardCursos";
+import { DashboardProfessores } from "./pages/dashboardProfessores/DashboardProfessores";
 
 export function Router() {
   return (
@@ -12,6 +15,9 @@ export function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/alunos" element={<DashboardAlunos />} />
+        <Route path="/dashboard/cursos" element={<DashboardCursos />} />
+        <Route path="/dashboard/professores" element={<DashboardProfessores />} />
       </Routes>
     </BrowserRouter>
   );
