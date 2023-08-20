@@ -2,6 +2,7 @@ import { SignOut, UserCircle } from "@phosphor-icons/react";
 import { useState } from "react";
 import Logo from "../../assets/Logo_Branco.png";
 import { NavbarDashboardWrapper } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 export interface iNavbarhDashboard {
   role: string;
@@ -10,6 +11,7 @@ export interface iNavbarhDashboard {
 export function NavbarDashboard({ role }: iNavbarhDashboard) {
   const [page, setPage] = useState("home");
   const [userRole, setUserRole] = useState(role);
+  const navigate = useNavigate();
 
   function returnGreeting(role: string) {
     switch (role) {
@@ -105,7 +107,10 @@ export function NavbarDashboard({ role }: iNavbarhDashboard) {
           </div>
         )}
       </div>
-      <div className="logout">
+      <div className="logout" onClick={() => {
+        navigate("/");
+        localStorage.clear();
+      }}>
         <SignOut size={32} />
         <span>Sair</span>
       </div>
