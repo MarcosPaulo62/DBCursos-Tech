@@ -40,6 +40,7 @@ export const ColorsTheme = {
     blue: "#1C58F8",
     white: "#FFFFFF",
     darkBlue: "#070F26",
+    mediumBlue: "#000F38",
     black: "#000000",
     offWhite: "#F5F5F5",
     error: "#F34F50",
