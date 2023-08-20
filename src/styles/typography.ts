@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import BaseTitle from "../components/typography/Typography";
+import BaseTitle from "../Components/typography/Typography";
 
 export const StyledTitle = styled(BaseTitle)`
   font-family: "Inter", sans-serif;
