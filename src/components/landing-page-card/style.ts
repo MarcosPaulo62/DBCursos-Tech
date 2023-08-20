@@ -1,22 +1,46 @@
 import styled from "styled-components";
 
+export const StyledContainerCard = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5rem;  
+`
+
 export const StyledCardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   border-radius: 1rem;
-  background-color: ${({ theme }) => theme.color.darkBlue};
+  background-color: ${({ theme }) => theme.color.offWhite};
   width: 21.25rem;
-  height: 23.75rem;
-  gap: 1.75rem;
+  height: 17rem;
+  border: 1px solid ${({theme}) => theme.color.darkBlue};
+
+  div{
+
+    margin-top: 3.6rem;
+    margin-bottom:4.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+  }
+  
 
   .title {
-    margin-top: 3.62rem;
-    color: ${({ theme }) => theme.color.white};
+    
+    color: ${({ theme }) => theme.color.darkBlue};
+    text-align: center;
+    
   }
 
-  .footer-card {
-    margin-bottom: 4rem;
+
+  
+
+
+  .card-p {
+    color: ${({ theme }) => theme.color.darkBlue};
+    line-height: 1.25rem;
   }
 `;
