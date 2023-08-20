@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import {createGlobalStyle} from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     *{
@@ -7,9 +7,11 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         font-family: 'Inter', sans-serif;
     }
-    
-    
 
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+    
     button {
         cursor: pointer;
         background: transparent;
