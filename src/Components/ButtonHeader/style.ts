@@ -11,4 +11,9 @@ export const ButtonWrapper = styled.button`
   justify-content: center;
   min-height: 2.5rem;
   padding: 0 1.125rem;
+  transition: all 0.4s ease;
+
+  &:hover {
+    background-color: #070f26CC;
+  }
 `;
