@@ -37,6 +37,7 @@ export const StyledContainerFooter = styled.footer`
       border-radius: 0.5rem;
       margin-top: 0.56rem;
       margin-bottom: 2.06rem;
+      color: ${({ theme }) => theme.color.white};
     }
 
     input::placeholder {
@@ -58,6 +59,7 @@ export const StyledContainerFooter = styled.footer`
     width: 20.3rem;
     gap: 1.88rem;
     margin-top: 1.2rem;
+    cursor: pointer;
 
     img {
       width: 1.3rem;
