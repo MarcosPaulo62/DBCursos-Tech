@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { AuthenticationCardWrapper } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 export interface IFormAuthValues {
   login: string;
@@ -22,6 +23,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
   const [isLogin, setIsLogin] = useState(isLoginPage);
   const [role, setRole] = useState("aluno");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function onSubmit(userData: IFormAuthValues) {
     if (!userData.login.trim() || !userData.senha.trim()) {
@@ -76,6 +78,8 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
           theme: "dark",
           position: "top-center",
         });
+
+        navigate("/login");
       } catch (error) {
         console.log(error);
       } finally {
@@ -121,10 +125,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
         localStorage.setItem("cargo", role);
         localStorage.setItem("nome", userData.login);
 
-        toast.success("Login realizado com sucesso!", {
-          theme: "dark",
-          position: "top-center",
-        });
+        navigate("/dashboard");
       } catch (error) {
         console.log(error);
       } finally {
@@ -140,6 +141,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
           className={isLogin ? "onfocus" : ""}
           onClick={() => {
             setIsLogin(true);
+            navigate("/login");
           }}
         >
           ENTRAR
@@ -148,6 +150,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
           className={!isLogin ? "onfocus" : ""}
           onClick={() => {
             setIsLogin(false);
+            navigate("/cadastro");
           }}
         >
           CRIAR CONTA
