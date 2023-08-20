@@ -4,7 +4,7 @@ export const StyledContainerCard = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 5rem;
+  gap: 5rem;  
 `
 
 export const StyledCardContainer = styled.div`
@@ -15,6 +15,7 @@ export const StyledCardContainer = styled.div`
   background-color: ${({ theme }) => theme.color.offWhite};
   width: 21.25rem;
   height: 17rem;
+  border: 1px solid ${({theme}) => theme.color.darkBlue};
 
   div{
 
