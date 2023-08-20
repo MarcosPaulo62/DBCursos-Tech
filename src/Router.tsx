@@ -1,10 +1,17 @@
-import {Routes, Route} from "react-router-dom";
-import Home from "./pages/Home/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Login } from "./pages/Login/Login";
+import { SignUp } from "./pages/SignUp/SignUp";
+import { Dashboard } from "./pages/Dashboard/Dashboard";
 
-export default function Router() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-    </Routes>
-  );
+export function Router() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" />
+                <Route path="/login" element={<Login />} />
+                <Route path="/cadastro" element={<SignUp />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
+        </BrowserRouter>
+    )
 }
