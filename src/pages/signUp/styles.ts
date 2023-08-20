@@ -24,4 +24,26 @@ export const SignUpAndLoginWrapper = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
     z-index: -1;
   }
+
+  .homeButton {
+    all: unset;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: ${({ theme }) => theme.color.white};
+    background-color: ${({ theme }) => theme.color.blue};
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+    &:hover {
+      color: ${({ theme }) => theme.color.darkBlue};
+    }
+    span {
+      font-size: 1.2rem;
+    }
+  }
 `;
