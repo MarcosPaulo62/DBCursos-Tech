@@ -18,7 +18,6 @@ export const StyledEventsContainer = styled.aside`
     border-radius: 1rem;
     display: flex;
     gap: 1rem;
-    justify-content: center;
     padding: 1rem;
 
     .date-day {
