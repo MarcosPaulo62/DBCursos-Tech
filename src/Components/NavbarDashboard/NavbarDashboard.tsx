@@ -13,18 +13,7 @@ export function NavbarDashboard({ role }: iNavbarhDashboard) {
   const userRole = role;
   const navigate = useNavigate();
 
-  function returnGreeting(role: string) {
-    switch (role) {
-      case "aluno":
-        return "Olá, aluno(a)!";
-      case "professor":
-        return "Olá, professor(a)!";
-      case "admin":
-        return "Olá, admin!";
-      default:
-        break;
-    }
-  }
+  const userLogado = localStorage.getItem("nome");
 
   return (
     <NavbarDashboardWrapper>
@@ -32,7 +21,7 @@ export function NavbarDashboard({ role }: iNavbarhDashboard) {
         <img className="logo" src={Logo} alt="logo da DBCursos Tech" />
         <div className="greeting">
           <UserCircle size={48} />
-          <span>{returnGreeting(role)}</span>
+          <span>Olá, {userLogado}!</span>
         </div>
         {userRole.toLocaleLowerCase() === "aluno" && (
           <div className="links">
@@ -107,10 +96,13 @@ export function NavbarDashboard({ role }: iNavbarhDashboard) {
           </div>
         )}
       </div>
-      <div className="logout" onClick={() => {
-        navigate("/");
-        localStorage.clear();
-      }}>
+      <div
+        className="logout"
+        onClick={() => {
+          navigate("/");
+          localStorage.clear();
+        }}
+      >
         <SignOut size={32} />
         <span>Sair</span>
       </div>
