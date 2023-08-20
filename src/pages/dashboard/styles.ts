@@ -26,6 +26,11 @@ export const DashboardWrapper = styled.div`
       display: flex;
       flex-direction: column;
       gap: 1.3rem;
+
+      div {
+        display: flex;
+        gap: 2rem;
+      }
     }
   }
 `;
