@@ -1,7 +1,6 @@
 import {StyledSpan} from "../../styles/typography";
 import {StyledContainerFooter} from "./style";
 import {LinkedinLogo, InstagramLogo, YoutubeLogo} from "@phosphor-icons/react";
-import Navlink from "../navlink/Navlink";
 import {Link as ScrollLink} from "react-scroll";
 import {Link} from "react-router-dom";
 
@@ -14,11 +13,11 @@ export default function Footer() {
             <strong>DBCursos Tech</strong>
           </StyledSpan>
           <div>
-            <Navlink to="/">
+            <Link to="/">
               <ScrollLink to="header" smooth={true} duration={500}>
                 Home
               </ScrollLink>
-            </Navlink>
+            </Link>
           </div>
         </div>
         <div className="bdcursos-institucional">
@@ -26,9 +25,9 @@ export default function Footer() {
             <strong>Institucional</strong>
           </StyledSpan>
           <div>
-            <Navlink to="/dashboard">Administrador</Navlink>
-            <Navlink to="/dashboard">Aluno</Navlink>
-            <Navlink to="/dashboard">Professor</Navlink>
+            <Link to="/dashboard">Administrador</Link>
+            <Link to="/dashboard">Aluno</Link>
+            <Link to="/dashboard">Professor</Link>
           </div>
         </div>
       </div>

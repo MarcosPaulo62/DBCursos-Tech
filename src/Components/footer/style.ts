@@ -22,10 +22,18 @@ export const StyledContainerFooter = styled.footer`
         flex-direction: column;
         gap: 0.5rem;
 
-        a:hover {
-          height: calc(1.125rem + 1px);
-          padding: 0;
-          margin: 0;
+        a {
+          color: ${({theme}) => theme.color.white};
+          font-size: 1rem;
+          text-decoration: none;
+          transition: all 0.3s ease;
+
+          &:hover {
+            border-bottom: 1px solid ${({theme}) => theme.color.white};
+            height: calc(1.125rem + 1px);
+            padding: 0;
+            margin: 0;
+          }
         }
       }
     }
@@ -72,7 +80,7 @@ export const StyledContainerFooter = styled.footer`
       color: ${({theme}) => theme.color.white};
       transition: all 0.5s ease;
 
-      i{
+      i {
         font-size: 1.75rem;
       }
 
