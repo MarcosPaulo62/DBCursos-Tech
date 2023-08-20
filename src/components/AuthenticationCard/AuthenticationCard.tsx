@@ -119,6 +119,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
 
         localStorage.setItem("token", data);
         localStorage.setItem("cargo", role);
+        localStorage.setItem("nome", userData.login);
 
         toast.success("Login realizado com sucesso!", {
           theme: "dark",
