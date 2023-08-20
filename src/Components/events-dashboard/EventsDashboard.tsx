@@ -2,8 +2,35 @@ import { StyledSpan } from "../../styles/typography";
 import { StyledEventsContainer } from "./style";
 
 export default function EventsDashboard() {
+  const dates = getFourFutureDates();
 
+  function getDay(day: number) {
+    return dates[day - 1].split(" ")[0];
+  }
 
+  function getMonth(day: number) {
+    return dates[day - 1].split(" ")[2].toUpperCase();
+  }
+
+  function getFourFutureDates() {
+    const currentDate = new Date();
+
+    const formattedDates = [];
+
+    for (let i = 1; i <= 4; i++) {
+      const futureDate = new Date(currentDate);
+      futureDate.setDate(currentDate.getDate() + i);
+
+      const formattedDate = futureDate.toLocaleString("pt-BR", {
+        day: "numeric",
+        month: "short",
+      });
+
+      formattedDates.push(formattedDate.slice(0, -1));
+    }
+
+    return formattedDates;
+  }
 
   return (
     <StyledEventsContainer>
@@ -13,10 +40,10 @@ export default function EventsDashboard() {
       <div>
         <div>
           <StyledSpan className="date-day" fontSize="lg">
-            28
+            {getDay(1)}
           </StyledSpan>
           <StyledSpan className="date-month" fontSize="lg">
-            SET
+            {getMonth(1)}
           </StyledSpan>
         </div>
         <div>
@@ -31,10 +58,10 @@ export default function EventsDashboard() {
       <div>
         <div>
           <StyledSpan className="date-day" fontSize="lg">
-            02
+            {getDay(2)}
           </StyledSpan>
           <StyledSpan className="date-month" fontSize="lg">
-            OUT
+            {getMonth(2)}
           </StyledSpan>
         </div>
         <div>
@@ -49,10 +76,10 @@ export default function EventsDashboard() {
       <div>
         <div>
           <StyledSpan className="date-day" fontSize="lg">
-            28
+            {getDay(3)}
           </StyledSpan>
           <StyledSpan className="date-month" fontSize="lg">
-            NOV
+            {getMonth(3)}
           </StyledSpan>
         </div>
         <div>
@@ -67,10 +94,10 @@ export default function EventsDashboard() {
       <div>
         <div>
           <StyledSpan className="date-day" fontSize="lg">
-            15
+            {getDay(4)}
           </StyledSpan>
           <StyledSpan className="date-month" fontSize="lg">
-            DEZ
+            {getMonth(4)}
           </StyledSpan>
         </div>
         <div>
