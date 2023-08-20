@@ -9,6 +9,7 @@ import studentsImage from "../../assets/students-img.png";
 import codeGirl from "../../assets/codegirl.png";
 import LandingPageCard from "../../Components/landing-page-card/LandingPageCard";
 import Footer from "../../Components/footer/Footer";
+import {Link} from "react-router-dom";
 
 interface iFormContact {
   name: string;
@@ -50,7 +51,7 @@ export default function Home() {
           </div>
         </HeroContent>
       </HeroWrapper>
-      <SectionCardsWrapper>
+      <SectionCardsWrapper id="differentials">
         <SectionTitle>Diferenciais da DBCursos Tech</SectionTitle>
         <LandingPageCard />
       </SectionCardsWrapper>
@@ -59,10 +60,12 @@ export default function Home() {
         <div>
           <h3>É fácil começar a aprender</h3>
           <p>Com a DBCursosTech, você aprende do melhor jeito. Faça já sua matrícula!</p>
-          <Button>Inscreva-se</Button>
+          <Link to="/cadastro">
+            <Button>Inscreva-se</Button>
+          </Link>
         </div>
       </RegisterSectionWrapper>
-      <AboutSectionWrapper>
+      <AboutSectionWrapper id="about">
         <SectionTitle>Sobre a instituição</SectionTitle>
         <div className="about-container">
           <div className="about-content">
@@ -91,7 +94,7 @@ export default function Home() {
           </div>
         </div>
       </AboutSectionWrapper>
-      <DoubtsFormSection>
+      <DoubtsFormSection id="contact">
         <div>
           <img
             src={codeGirl}
