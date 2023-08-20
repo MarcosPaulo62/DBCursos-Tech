@@ -15,9 +15,15 @@ interface iFormContact {
 }
 
 export default function Home() {
-  const {handleSubmit, reset, register} = useForm<iFormContact>();
+  const {
+    handleSubmit,
+    reset,
+    register,
+    formState: {errors},
+  } = useForm<iFormContact>();
 
   function onSubmit(data: iFormContact) {
+    console.log(data);
     toast.success("Formulário enviado com sucesso!", {
       position: "top-center",
       theme: "dark",
