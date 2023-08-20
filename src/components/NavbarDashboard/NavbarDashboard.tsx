@@ -1,7 +1,7 @@
-import { NavbarDashboardWrapper } from "./styles";
-import Logo from "../../assets/Logo_Branco.png";
-import { UserCircle, SignOut } from "@phosphor-icons/react";
+import { SignOut, UserCircle } from "@phosphor-icons/react";
 import { useState } from "react";
+import Logo from "../../assets/Logo_Branco.png";
+import { NavbarDashboardWrapper } from "./styles";
 
 export interface iNavbarhDashboard {
   role: string;
@@ -32,80 +32,78 @@ export function NavbarDashboard({ role }: iNavbarhDashboard) {
           <UserCircle size={48} />
           <span>{returnGreeting(role)}</span>
         </div>
-        <div className="links">
-          {userRole.toLocaleLowerCase() === "aluno" && (
-            <div>
-              <button
-                className={page === "home" ? "onfocus" : ""}
-                onClick={() => setPage("home")}
-              >
-                Home
-              </button>
-              <button
-                className={page === "cursos" ? "onfocus" : ""}
-                onClick={() => setPage("cursos")}
-              >
-                Cursos
-              </button>
-              <button
-                className={page === "professores" ? "onfocus" : ""}
-                onClick={() => setPage("professores")}
-              >
-                Professores
-              </button>
-            </div>
-          )}
-          {userRole.toLocaleLowerCase() === "professor" && (
-            <div>
-              <button
-                className={page === "home" ? "onfocus" : ""}
-                onClick={() => setPage("home")}
-              >
-                Home
-              </button>
-              <button
-                className={page === "cursos" ? "onfocus" : ""}
-                onClick={() => setPage("cursos")}
-              >
-                Cursos
-              </button>
-              <button
-                className={page === "alunos" ? "onfocus" : ""}
-                onClick={() => setPage("alunos")}
-              >
-                Alunos
-              </button>
-            </div>
-          )}
-          {userRole.toLocaleLowerCase() === "admin" && (
-            <div>
-              <button
-                className={page === "home" ? "onfocus" : ""}
-                onClick={() => setPage("home")}
-              >
-                Home
-              </button>
-              <button
-                className={page === "cursos" ? "onfocus" : ""}
-                onClick={() => setPage("cursos")}
-              >
-                Cursos
-              </button>
-              <button
-                className={page === "alunos" ? "onfocus" : ""}
-                onClick={() => setPage("alunos")}
-              >
-                Alunos
-              </button>
-              <button
-                className={page === "professores" ? "onfocus" : ""}
-                onClick={() => setPage("professores")}
-              >
-                Professores
-              </button>
-            </div>
-          )}
-        </div>
+        {userRole.toLocaleLowerCase() === "aluno" && (
+          <div className="links">
+            <button
+              className={page === "home" ? "onfocus" : ""}
+              onClick={() => setPage("home")}
+            >
+              Home
+            </button>
+            <button
+              className={page === "cursos" ? "onfocus" : ""}
+              onClick={() => setPage("cursos")}
+            >
+              Cursos
+            </button>
+            <button
+              className={page === "professores" ? "onfocus" : ""}
+              onClick={() => setPage("professores")}
+            >
+              Professores
+            </button>
+          </div>
+        )}
+        {userRole.toLocaleLowerCase() === "professor" && (
+          <div className="links">
+            <button
+              className={page === "home" ? "onfocus" : ""}
+              onClick={() => setPage("home")}
+            >
+              Home
+            </button>
+            <button
+              className={page === "cursos" ? "onfocus" : ""}
+              onClick={() => setPage("cursos")}
+            >
+              Cursos
+            </button>
+            <button
+              className={page === "alunos" ? "onfocus" : ""}
+              onClick={() => setPage("alunos")}
+            >
+              Alunos
+            </button>
+          </div>
+        )}
+        {userRole.toLocaleLowerCase() === "admin" && (
+          <div className="links">
+            <button
+              className={page === "home" ? "onfocus" : ""}
+              onClick={() => setPage("home")}
+            >
+              Home
+            </button>
+            <button
+              className={page === "cursos" ? "onfocus" : ""}
+              onClick={() => setPage("cursos")}
+            >
+              Cursos
+            </button>
+            <button
+              className={page === "alunos" ? "onfocus" : ""}
+              onClick={() => setPage("alunos")}
+            >
+              Alunos
+            </button>
+            <button
+              className={page === "professores" ? "onfocus" : ""}
+              onClick={() => setPage("professores")}
+            >
+              Professores
+            </button>
+          </div>
+        )}
       </div>
       <div className="logout">
         <SignOut size={32} />

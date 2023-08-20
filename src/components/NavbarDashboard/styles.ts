@@ -33,12 +33,10 @@ export const NavbarDashboardWrapper = styled.div`
   .links {
     display: flex;
     flex-direction: column;
-    align-items: center;
     button {
       color: ${({ theme }) => theme.color.white};
       padding: 1rem 2rem;
       font-size: 1.3rem;
-      width: 100%;
       text-align: start;
       transition: all 0.3s ease-in;
       border-radius: 0.8rem;
