@@ -1,5 +1,5 @@
-import { AuthenticationCard } from "../../components/AuthenticationCard/AuthenticationCard";
-import { SignUpAndLoginWrapper } from "../SignUp/styles";
+import {AuthenticationCard} from "../../Components/authenticationCard/AuthenticationCard";
+import {SignUpAndLoginWrapper} from "../signUp/styles";
 
 export function Login() {
   return (

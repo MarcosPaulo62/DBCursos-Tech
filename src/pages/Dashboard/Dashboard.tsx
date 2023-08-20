@@ -1,4 +1,4 @@
-import { NavbarDashboard } from "../../components/NavbarDashboard/NavbarDashboard";
+import { NavbarDashboard } from "../../Components/NavbarDashboard/NavbarDashboard";
 import { DashboardWrapper } from "./styles";
 
 export function Dashboard() {
