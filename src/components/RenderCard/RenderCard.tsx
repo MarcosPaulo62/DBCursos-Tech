@@ -2,7 +2,6 @@ import { CardHome } from "../CardHome/CardHome";
 import { Content } from "./style";
 
 export const RenderCard = () => {
-  localStorage.setItem("cargo", "aluno");
   const cargo = localStorage.getItem("cargo");
   let conteudo: React.ReactNode;
   if (cargo === "professor") {
