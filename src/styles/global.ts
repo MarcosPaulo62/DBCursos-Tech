@@ -42,7 +42,7 @@ export const ColorsTheme = {
     darkBlue: "#070F26",
     black: "#000000",
     offWhite: "#F5F5F5",
-    error: "#F34F50",
+    error: "#FC0000",
     success: "#36C76C",
   },
 };
