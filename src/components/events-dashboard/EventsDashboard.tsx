@@ -2,6 +2,9 @@ import { StyledSpan } from "../../styles/typography";
 import { StyledEventsContainer } from "./style";
 
 export default function EventsDashboard() {
+
+
+
   return (
     <StyledEventsContainer>
       <StyledSpan className="title-span" fontSize="lg">
