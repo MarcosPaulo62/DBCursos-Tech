@@ -13,11 +13,9 @@ export default function Footer() {
             <strong>DBCursos Tech</strong>
           </StyledSpan>
           <div>
-            <Link to="/">
-              <ScrollLink to="header" smooth={true} duration={500}>
-                Home
-              </ScrollLink>
-            </Link>
+            <ScrollLink to="header" smooth={true} duration={500}>
+              Home
+            </ScrollLink>
           </div>
         </div>
         <div className="bdcursos-institucional">
