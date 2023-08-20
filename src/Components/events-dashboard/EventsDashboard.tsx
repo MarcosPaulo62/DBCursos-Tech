@@ -1,5 +1,5 @@
-import { StyledSpan } from "../../styles/typography";
-import { StyledEventsContainer } from "./style";
+import {StyledSpan} from "../../styles/typography";
+import {StyledEventsContainer} from "./style";
 
 export default function EventsDashboard() {
   const dates = getFourFutureDates();
@@ -37,7 +37,7 @@ export default function EventsDashboard() {
       <StyledSpan className="title-span" fontSize="lg">
         Eventos
       </StyledSpan>
-      <div>
+      <div className="event-container">
         <div>
           <StyledSpan className="date-day" fontSize="lg">
             {getDay(1)}
@@ -46,16 +46,11 @@ export default function EventsDashboard() {
             {getMonth(1)}
           </StyledSpan>
         </div>
-        <div>
-          <StyledSpan className="span-up" fontSize="md">
-            Gincana
-          </StyledSpan>
-          <StyledSpan className="span-down" fontSize="md">
-            DBCursos
-          </StyledSpan>
-        </div>
+        <StyledSpan className="span-up" fontSize="md">
+          Gincana DBCursos
+        </StyledSpan>
       </div>
-      <div>
+      <div className="event-container">
         <div>
           <StyledSpan className="date-day" fontSize="lg">
             {getDay(2)}
@@ -64,16 +59,11 @@ export default function EventsDashboard() {
             {getMonth(2)}
           </StyledSpan>
         </div>
-        <div>
-          <StyledSpan className="span-up" fontSize="md">
-            Avaliações
-          </StyledSpan>
-          <StyledSpan className="span-down" fontSize="md">
-            Trimestrais
-          </StyledSpan>
-        </div>
+        <StyledSpan className="span-up" fontSize="md">
+          Avaliações Trimestrais
+        </StyledSpan>
       </div>
-      <div>
+      <div className="event-container">
         <div>
           <StyledSpan className="date-day" fontSize="lg">
             {getDay(3)}
@@ -82,16 +72,11 @@ export default function EventsDashboard() {
             {getMonth(3)}
           </StyledSpan>
         </div>
-        <div>
-          <StyledSpan className="span-up" fontSize="md">
-            Avaliações
-          </StyledSpan>
-          <StyledSpan className="span-down" fontSize="md">
-            Finais
-          </StyledSpan>
-        </div>
+        <StyledSpan className="span-up" fontSize="md">
+          Avaliações Finais
+        </StyledSpan>
       </div>
-      <div>
+      <div className="event-container">
         <div>
           <StyledSpan className="date-day" fontSize="lg">
             {getDay(4)}
@@ -100,15 +85,9 @@ export default function EventsDashboard() {
             {getMonth(4)}
           </StyledSpan>
         </div>
-        <div>
-          <StyledSpan className="span-ups" fontSize="md">
-            Fim do <br />
-            semestre
-          </StyledSpan>
-          <StyledSpan className="span-down" fontSize="md">
-            Letivo
-          </StyledSpan>
-        </div>
+        <StyledSpan className="span-ups" fontSize="md">
+          Fim do semestre Letivo
+        </StyledSpan>
       </div>
     </StyledEventsContainer>
   );
