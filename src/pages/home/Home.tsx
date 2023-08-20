@@ -51,7 +51,7 @@ export default function Home() {
           </div>
         </HeroContent>
       </HeroWrapper>
-      <SectionCardsWrapper>
+      <SectionCardsWrapper id="differentials">
         <SectionTitle>Diferenciais da DBCursos Tech</SectionTitle>
         <LandingPageCard />
       </SectionCardsWrapper>
@@ -65,7 +65,7 @@ export default function Home() {
           </Link>
         </div>
       </RegisterSectionWrapper>
-      <AboutSectionWrapper>
+      <AboutSectionWrapper id="about">
         <SectionTitle>Sobre a instituição</SectionTitle>
         <div className="about-container">
           <div className="about-content">
@@ -94,7 +94,7 @@ export default function Home() {
           </div>
         </div>
       </AboutSectionWrapper>
-      <DoubtsFormSection>
+      <DoubtsFormSection id="contact">
         <div>
           <img
             src={codeGirl}

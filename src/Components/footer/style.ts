@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const StyledContainerFooter = styled.footer`
   background-color: ${({theme}) => theme.color.darkBlue};
   display: flex;
-  height: 18rem;
   justify-content: space-between;
   padding: 3rem 10%;
   width: 100%;
@@ -36,7 +35,6 @@ export const StyledContainerFooter = styled.footer`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 12rem;
     width: 20.3rem;
 
     input {
