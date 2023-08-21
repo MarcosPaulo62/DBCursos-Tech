@@ -2,6 +2,9 @@ import { Eye } from "@phosphor-icons/react";
 import { StyledListagemContainer } from "./style";
 import { Pagination } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
+import { ModalCadastroProfessor } from "../ModalCadastroProfessor/ModalCadastroProfessor";
+import { ModalCadastroAluno } from "../ModalCadastroAluno/ModalCadastroAluno";
+import { ModalCadastroCurso } from "../ModalCadastroCurso/ModalCadastroCurso";
 import { CursosContext } from "../../context/CursosContext";
 import { AlunosContext } from "../../context/AlunosContext";
 import { ProfessoresContext } from "../../context/ProfessoresContext";
@@ -16,26 +19,38 @@ export default function ListagemItens({
   isAdmin,
   typeItems,
 }: ListagemItensProps) {
+  const [openAluno, setOpenAluno] = useState(false);
+  const [openProfessor, setOpenProfessor] = useState(false);
+  const [openCurso, setOpenCurso] = useState(false);
+  const handleClick = () => {
+    switch (typeItems) {
+      case "aluno":
+        setOpenAluno(true);
+        break;
+      case "professor":
+        setOpenProfessor(true);
+        break;
+      case "curso":
+        setOpenCurso(true);
+        break;
+    }
+  };
   const [currentPage, setPage] = useState(0);
   const itemsPerPage = 10;
 
-  const { alunosData, listaAlunos, totalPaginasAluno, listaAlunosPagination } =
+  const { alunosData, totalPaginasAluno, listaAlunosPagination } =
     useContext(AlunosContext);
 
   useEffect(() => {
     listaAlunosPagination(currentPage, 10);
-  }, [currentPage]);
+  }, [currentPage, listaAlunosPagination]);
 
-  const {
-    professoresData,
-    listaProfessores,
-    totalPaginasProf,
-    listaProfessoresPagination,
-  } = useContext(ProfessoresContext);
+  const { professoresData, totalPaginasProf, listaProfessoresPagination } =
+    useContext(ProfessoresContext);
 
   useEffect(() => {
     listaProfessoresPagination(currentPage, 10);
-  }, [currentPage]);
+  }, [currentPage, listaProfessoresPagination]);
 
   const { cursosData, listaCursos } = useContext(CursosContext);
 
@@ -43,7 +58,7 @@ export default function ListagemItens({
 
   useEffect(() => {
     listaCursos();
-  }, []);
+  }, [listaCursos]);
 
   function handleSetPage(_: any, newPage: number) {
     setPage(newPage - 1);
@@ -99,101 +114,115 @@ export default function ListagemItens({
   }
 
   return (
-    <StyledListagemContainer data-testid='lista-cursos'>
-      <div className="header">
-        <h2>{headerTitle}</h2>
-        <div>
-          {/* {isAdmin && <button>Adicionar novo</button>} */}
-          <input
-            type="text"
-            name="search"
-            id="search"
-            placeholder={inputPlaceholder}
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
+    <>
+      <StyledListagemContainer data-testid="lista-cursos">
+        <div className="header">
+          <h2>{headerTitle}</h2>
+          <div>
+            {isAdmin && <button onClick={handleClick}>Adicionar novo</button>}
+            <input
+              type="text"
+              name="search"
+              id="search"
+              placeholder={inputPlaceholder}
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+          </div>
         </div>
-      </div>
 
-      <table>
-        <thead>
-          <tr>
-            <th>{firstHeaderTable}</th>
-            <th>{secondHeaderTable}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {(() => {
-            let filteredItems: any[] = [];
+        <table>
+          <thead>
+            <tr>
+              <th>{firstHeaderTable}</th>
+              <th>{secondHeaderTable}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {(() => {
+              let filteredItems: any[] = [];
 
-            switch (typeItems) {
-              case "aluno":
-                filteredItems = filterItems(alunosData);
-                break;
-              case "professor":
-                filteredItems = filterItems(professoresData);
-                break;
-              case "curso":
-                const startIndex: number = currentPage * itemsPerPage;
-                const endIndex: number = startIndex + itemsPerPage;
-                const cursosDaPagina: any[] = cursosData.slice(
-                  startIndex,
-                  endIndex
-                );
-                filteredItems = filterItems(cursosDaPagina);
-                break;
-              default:
-                break;
-            }
+              switch (typeItems) {
+                case "aluno":
+                  filteredItems = filterItems(alunosData);
+                  break;
+                case "professor":
+                  filteredItems = filterItems(professoresData);
+                  break;
+                case "curso":
+                  const startIndex: number = currentPage * itemsPerPage;
+                  const endIndex: number = startIndex + itemsPerPage;
+                  const cursosDaPagina: any[] = cursosData.slice(
+                    startIndex,
+                    endIndex
+                  );
+                  filteredItems = filterItems(cursosDaPagina);
+                  break;
+                default:
+                  break;
+              }
 
-            return filteredItems.length > 0 ? (
-              filteredItems.map((item: any, index: number) => (
-                <tr key={index}>
-                  <td>
-                    {item.nome ?? "Não informado"}
-                    <Link
-                      to={`/dashboard/${typeItems}/${
-                        item.idAluno ?? item.idCurso ?? item.idProfessor
-                      }`}
-                    >
-                      <Eye size={32} weight="thin" />
-                    </Link>
-                  </td>
-                  <td>
-                    {typeItems === "curso"
-                      ? periodoCurso(item.periodo)
-                      : typeItems === "professor"
-                      ? item.especialidade ?? "Não informado"
-                      : item.numeroDeMatricula ?? "Não informado"}
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <td>Nenhuma correspondência encontrada.</td>
-            );
-          })()}
-        </tbody>
-      </table>
+              return filteredItems.length > 0 ? (
+                filteredItems.map((item: any, index: number) => (
+                  <tr key={index}>
+                    <td>
+                      {item.nome ?? "Não informado"}
+                      <Link
+                        to={`/dashboard/${typeItems}/${
+                          item.idAluno ?? item.idCurso ?? item.idProfessor
+                        }`}
+                      >
+                        <Eye size={32} weight="thin" />
+                      </Link>
+                    </td>
+                    <td>
+                      {typeItems === "curso"
+                        ? periodoCurso(item.periodo)
+                        : typeItems === "professor"
+                        ? item.especialidade ?? "Não informado"
+                        : item.numeroDeMatricula ?? "Não informado"}
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <td>Nenhuma correspondência encontrada.</td>
+              );
+            })()}
+          </tbody>
+        </table>
 
-      {typeItems == "aluno" ? (
-        <Pagination
-          count={totalPaginasAluno}
-          onChange={handleSetPage}
-          color="primary"
-        />
-      ) : typeItems == "professor" ? (
-        <Pagination
-          count={totalPaginasProf}
-          onChange={handleSetPage}
-          color="primary"
-        />
-      ) : (
-        <Pagination
-          count={totalPagesCursos}
-          onChange={handleSetPage}
-          color="primary"
-        />
-      )}
-    </StyledListagemContainer>
+        {typeItems === "aluno" ? (
+          <Pagination
+            count={totalPaginasAluno}
+            onChange={handleSetPage}
+            color="primary"
+          />
+        ) : typeItems === "professor" ? (
+          <Pagination
+            count={totalPaginasProf}
+            onChange={handleSetPage}
+            color="primary"
+          />
+        ) : (
+          <Pagination
+            count={totalPagesCursos}
+            onChange={handleSetPage}
+            color="primary"
+          />
+        )}
+      </StyledListagemContainer>
+      <ModalCadastroProfessor
+        open={openProfessor}
+        onClose={() => setOpenProfessor(false)}
+      />
+      <ModalCadastroAluno
+        open={openAluno}
+        onClose={() => setOpenAluno(false)}
+      />
+      <ModalCadastroCurso
+        open={openCurso}
+        onClose={() => setOpenCurso(false)}
+      />
+    </>
   );
 }
