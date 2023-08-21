@@ -7,20 +7,17 @@ export const NavbarWrapper = styled.nav`
 
   a {
     color: ${({theme}) => theme.color.white};
+    cursor: pointer;
     font-size: 1rem;
     text-decoration: none;
     transition: all 0.3s ease;
-    font-weight: 700;
+    font-weight: 300;
     text-transform: uppercase;
 
     &:hover {
       border-bottom: 1px solid ${({theme}) => theme.color.white};
       padding-bottom: 0.5rem;
       margin-top: 0.5rem;
-    }
-
-    &:last-child:hover {
-      border: none;
     }
   }
 
@@ -35,6 +32,7 @@ export const NavbarWrapper = styled.nav`
     justify-content: center;
     min-height: 2.5rem;
     padding: 0 1.125rem;
+    text-transform: uppercase;
     transition: all 0.4s ease;
 
     &:hover {

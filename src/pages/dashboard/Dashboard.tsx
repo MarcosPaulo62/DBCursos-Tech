@@ -7,11 +7,13 @@ import aluna from "../../assets/aluna.png";
 import professor from "../../assets/professor.png";
 import curso from "../../assets/curso-online.png";
 import { Link } from "react-router-dom";
+import React from "react";
 
 export function Dashboard() {
   const role = localStorage.getItem("cargo");
 
   return (
+    <>
     <DashboardWrapper>
       <NavbarDashboard role={role ? role : ""} />
       <div className="body">
@@ -44,5 +46,7 @@ export function Dashboard() {
         </div>
       </div>
     </DashboardWrapper>
+    
+    </>
   );
 }

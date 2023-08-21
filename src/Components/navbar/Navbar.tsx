@@ -1,34 +1,32 @@
-import {Link as ScrollLink} from "react-scroll";
-import {NavbarWrapper} from "./style";
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
+import { NavbarWrapper } from "./style";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
   return (
     <>
       <NavbarWrapper>
-        <Link to="/">
-          <ScrollLink to="initial-page" smooth={true} duration={500}>
-            Home
-          </ScrollLink>
-        </Link>
-        <Link to="/">
-          <ScrollLink to="differentials" smooth={true} duration={500}>
-            Diferenciais
-          </ScrollLink>
-        </Link>
-        <Link to="/">
-          <ScrollLink to="about" smooth={true} duration={500}>
-            Sobre
-          </ScrollLink>
-        </Link>
-        <Link to="/">
-          <ScrollLink to="contact" smooth={true} duration={500}>
-            Contato
-          </ScrollLink>
-        </Link>
-        <Link to="/login">
-          <button>Entrar</button>
-        </Link>
+        {isHome && (
+          <>
+            <ScrollLink to="initial-page" smooth={true} duration={500}>
+              Home
+            </ScrollLink>
+            <ScrollLink to="differentials" smooth={true} duration={500} offset={-50}>
+              Diferenciais
+            </ScrollLink>
+            <ScrollLink to="about" smooth={true} duration={500} offset={-50}>
+              Sobre
+            </ScrollLink>
+            <ScrollLink to="contact" smooth={true} duration={500} offset={-50}>
+              Contato
+            </ScrollLink>
+            <button onClick={() => navigate("/login")}>Entrar</button>
+          </>
+        )}
       </NavbarWrapper>
     </>
   );

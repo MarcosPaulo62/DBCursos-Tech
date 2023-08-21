@@ -1,10 +1,14 @@
 import { Eye } from "@phosphor-icons/react";
 import { StyledListagemContainer } from "./style";
 import { Pagination } from "@mui/material";
+import { useContext, useEffect, useState } from "react";
 import { ModalCadastroProfessor } from "../ModalCadastroProfessor/ModalCadastroProfessor";
 import { ModalCadastroAluno } from "../ModalCadastroAluno/ModalCadastroAluno";
 import { ModalCadastroCurso } from "../ModalCadastroCurso/ModalCadastroCurso";
-import { useState } from "react";
+import { CursosContext } from "../../context/CursosContext";
+import { AlunosContext } from "../../context/AlunosContext";
+import { ProfessoresContext } from "../../context/ProfessoresContext";
+import { Link } from "react-router-dom";
 
 interface ListagemItensProps {
   isAdmin: Boolean;
@@ -31,43 +35,61 @@ export default function ListagemItens({
         break;
     }
   };
+  const [currentPage, setPage] = useState(0);
+  const itemsPerPage = 10;
 
-  const arrayAlunos = [
-    { nome: "Gustavo Guanabara", matricula: "48654765" },
-    { nome: "Vitor Nunes", matricula: "4657421" },
-    { nome: "Valéria Almeida", matricula: "445545" },
-    { nome: "Felipe Deschamps", matricula: "854654" },
-    { nome: "Micael Mota", matricula: "854111111" },
-    { nome: "Gustavo Guanabara", matricula: "48654765" },
-    { nome: "Vitor Nunes", matricula: "4657421" },
-    { nome: "Valéria Almeida", matricula: "445545" },
-    { nome: "Felipe Deschamps", matricula: "854654" },
-    { nome: "Micael Mota", matricula: "854111111" },
-  ];
-  const arrayCursos = [
-    { nome: "Python avançado", periodo: "Manhã" },
-    { nome: "MySQL", periodo: "Manhã" },
-    { nome: "React Redux", periodo: "Noite" },
-    { nome: "Node.js", periodo: "Tarde" },
-    { nome: "Java + Spring ", periodo: "Noite" },
-    { nome: "Python avançado", periodo: "Manhã" },
-    { nome: "MySQL", periodo: "Manhã" },
-    { nome: "React Redux", periodo: "Noite" },
-    { nome: "Node.js", periodo: "Tarde" },
-    { nome: "Java + Spring ", periodo: "Noite" },
-  ];
-  const arrayProfessores = [
-    { nome: "Gustavo Guanabara", especialidade: "Matemática" },
-    { nome: "Vitor Nunes", especialidade: "Geoprocessamento" },
-    { nome: "Valéria Almeida", especialidade: "Português e Literatura" },
-    { nome: "Felipe Deschamps", especialidade: "DevOps" },
-    { nome: "Micael Mota", especialidade: "Agile" },
-    { nome: "Gustavo Guanabara", especialidade: "Matemática" },
-    { nome: "Vitor Nunes", especialidade: "Geoprocessamento" },
-    { nome: "Valéria Almeida", especialidade: "Português e Literatura" },
-    { nome: "Felipe Deschamps", especialidade: "DevOps" },
-    { nome: "Micael Mota", especialidade: "Agile" },
-  ];
+  const { alunosData, listaAlunos, totalPaginasAluno, listaAlunosPagination } =
+    useContext(AlunosContext);
+
+  useEffect(() => {
+    listaAlunosPagination(currentPage, 10);
+  }, [currentPage]);
+
+  const {
+    professoresData,
+    listaProfessores,
+    totalPaginasProf,
+    listaProfessoresPagination,
+  } = useContext(ProfessoresContext);
+
+  useEffect(() => {
+    listaProfessoresPagination(currentPage, 10);
+  }, [currentPage]);
+
+  const { cursosData, listaCursos } = useContext(CursosContext);
+
+  const totalPagesCursos = Math.ceil(cursosData.length / 10);
+
+  useEffect(() => {
+    listaCursos();
+  }, []);
+
+  function handleSetPage(_: any, newPage: number) {
+    setPage(newPage - 1);
+  }
+
+  const [searchValue, setSearchValue] = useState("");
+
+  function filterItems(items: any[]): any[] {
+    return items.filter((item) =>
+      item.nome.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  }
+
+  function periodoCurso(periodo: string) {
+    switch (periodo.toUpperCase()) {
+      case "MANHÃ":
+        return "Manhã";
+      case "MANHA":
+        return "Manhã";
+      case "TARDE":
+        return "Tarde";
+      case "NOITE":
+        return "Noite";
+      default:
+        return "Não informado";
+    }
+  }
 
   let headerTitle = "";
   let inputPlaceholder = "";
@@ -97,7 +119,7 @@ export default function ListagemItens({
 
   return (
     <>
-      <StyledListagemContainer>
+      <StyledListagemContainer data-testid="lista-cursos">
         <div className="header">
           <h2>{headerTitle}</h2>
           <div>
@@ -107,6 +129,8 @@ export default function ListagemItens({
               name="search"
               id="search"
               placeholder={inputPlaceholder}
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
             />
           </div>
         </div>
@@ -120,45 +144,76 @@ export default function ListagemItens({
           </thead>
           <tbody>
             {(() => {
+              let filteredItems: any[] = [];
+
               switch (typeItems) {
                 case "aluno":
-                  return arrayAlunos.map((item) => (
-                    <tr key={item.matricula}>
-                      <td>
-                        {item.nome}
-                        <Eye size={32} weight="thin" />
-                      </td>
-                      <td>{item.matricula}</td>
-                    </tr>
-                  ));
+                  filteredItems = filterItems(alunosData);
+                  break;
                 case "professor":
-                  return arrayProfessores.map((item) => (
-                    <tr key={item.nome}>
-                      <td>
-                        {item.nome}
-                        <Eye size={32} weight="thin" />
-                      </td>
-                      <td>{item.especialidade}</td>
-                    </tr>
-                  ));
+                  filteredItems = filterItems(professoresData);
+                  break;
                 case "curso":
-                  return arrayCursos.map((item) => (
-                    <tr key={item.nome}>
-                      <td>
-                        {item.nome}
-                        <Eye size={32} weight="thin" />
-                      </td>
-                      <td>{item.periodo}</td>
-                    </tr>
-                  ));
+                  const startIndex: number = currentPage * itemsPerPage;
+                  const endIndex: number = startIndex + itemsPerPage;
+                  const cursosDaPagina: any[] = cursosData.slice(
+                    startIndex,
+                    endIndex
+                  );
+                  filteredItems = filterItems(cursosDaPagina);
+                  break;
                 default:
-                  return null;
+                  break;
               }
+
+              return filteredItems.length > 0 ? (
+                filteredItems.map((item: any, index: number) => (
+                  <tr key={index}>
+                    <td>
+                      {item.nome ?? "Não informado"}
+                      <Link
+                        to={`/dashboard/${typeItems}/${
+                          item.idAluno ?? item.idCurso ?? item.idProfessor
+                        }`}
+                      >
+                        <Eye size={32} weight="thin" />
+                      </Link>
+                    </td>
+                    <td>
+                      {typeItems === "curso"
+                        ? periodoCurso(item.periodo)
+                        : typeItems === "professor"
+                        ? item.especialidade ?? "Não informado"
+                        : item.numeroDeMatricula ?? "Não informado"}
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <td>Nenhuma correspondência encontrada.</td>
+              );
             })()}
           </tbody>
         </table>
 
-        <Pagination count={10} color="primary" />
+        {typeItems == "aluno" ? (
+          <Pagination
+            count={totalPaginasAluno}
+            onChange={handleSetPage}
+            color="primary"
+          />
+        ) : typeItems == "professor" ? (
+          <Pagination
+            count={totalPaginasProf}
+            onChange={handleSetPage}
+            color="primary"
+          />
+        ) : (
+          <Pagination
+            count={totalPagesCursos}
+            onChange={handleSetPage}
+            color="primary"
+          />
+        )}
       </StyledListagemContainer>
       <ModalCadastroProfessor
         open={openProfessor}

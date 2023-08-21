@@ -24,6 +24,7 @@ export const StyledContainerFooter = styled.footer`
 
         a {
           color: ${({theme}) => theme.color.white};
+          cursor: pointer;
           font-size: 1rem;
           text-decoration: none;
           transition: all 0.3s ease;

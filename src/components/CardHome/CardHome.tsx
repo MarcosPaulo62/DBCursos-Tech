@@ -11,7 +11,7 @@ export const CardHome = ({ image, cargo }: CardHomeProps) => {
         <DivImg>
           <Img src={image} />
         </DivImg>
-        <Paragraph>Acessar {cargo}</Paragraph>
+        <Paragraph data-testid='access-role'>Acessar {cargo}</Paragraph>
       </Content>
     </>
   );

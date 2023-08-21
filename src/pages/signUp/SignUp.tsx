@@ -8,7 +8,7 @@ export function SignUp() {
     <SignUpAndLoginWrapper>
       <Link to={"/"} className="homeButton">
         <ArrowCircleLeft size={32} />
-        <span>Página Inicial</span>
+        <span data-testid='initial-page-text'>Página Inicial</span>
       </Link>
       <AuthenticationCard isLoginPage={false} />
     </SignUpAndLoginWrapper>
