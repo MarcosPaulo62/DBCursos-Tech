@@ -10,7 +10,7 @@ export function Login() {
         <ArrowCircleLeft size={32} data-testid="arrow-icon"/>
         <span>Página Inicial</span>
       </Link>
-      <AuthenticationCard isLoginPage={true} data-testid="auth-card" />
+      <AuthenticationCard isLoginPage={true} />
     </SignUpAndLoginWrapper>
   );
 }

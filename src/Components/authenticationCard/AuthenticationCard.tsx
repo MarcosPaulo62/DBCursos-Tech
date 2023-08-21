@@ -136,7 +136,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
   }
 
   return (
-    <AuthenticationCardWrapper>
+    <AuthenticationCardWrapper data-testid="auth-card">
       <div className="page-buttons">
         <button
           className={isLogin ? "onfocus" : ""}
