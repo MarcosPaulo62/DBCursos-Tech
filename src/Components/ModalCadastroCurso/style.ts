@@ -18,7 +18,6 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 50vw;
-  height: 65vh;
   background-color: #e8e8e8;
   border-radius: 16px;
 `;
@@ -109,5 +108,5 @@ export const ComboBox = styled.select`
   font-size: 1rem;
   font-weight: 300;
   background-color: #fff;
-  
 `;
+

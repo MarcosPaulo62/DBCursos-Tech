@@ -1,6 +1,5 @@
 import { XCircle } from "@phosphor-icons/react";
 import { useForm } from "react-hook-form";
-import Backdrop from "@mui/material/Backdrop";
 import {
   Actions,
   Content,
@@ -14,6 +13,15 @@ import {
   FormContent,
 } from "./style";
 import Modal from "@mui/material/Modal";
+import { toast } from "react-toastify";
+import { createTeacher } from "../../api/create-teacher";
+
+type FormProps = {
+  nome: string;
+  cpf: string;
+  especialidade: string;
+  salario: string;
+};
 
 export type ModalCadastroProfessorProps = {
   open: boolean;
@@ -24,9 +32,40 @@ export const ModalCadastroProfessor = ({
   open,
   onClose,
 }: ModalCadastroProfessorProps) => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const { register, handleSubmit, reset } = useForm<FormProps>();
+
+  const onSubmit = async (data: FormProps) => {
+    if (
+      data.nome === "" ||
+      data.cpf === "" ||
+      data.especialidade === "" ||
+      data.salario === ""
+    ) {
+      toast.warning("É necessário preencher todos os campos!", {
+        theme: "dark",
+        position: "top-center",
+      });
+    } else {
+      try {
+        await createTeacher({
+          ...data,
+          cpf: Number(data.cpf),
+          salario: Number(data.salario),
+        });
+        toast.success("Cadastro realizado com sucesso!", {
+          theme: "dark",
+          position: "top-center",
+        });
+        reset({ nome: "", cpf: "", especialidade: "", salario: "" });
+        onClose?.();
+      } catch {
+        toast.warning("Cadastro já existente!", {
+          theme: "dark",
+          position: "top-center",
+        });
+        reset({ nome: "", cpf: "", especialidade: "", salario: "" });
+      }
+    }
   };
   return (
     <>
@@ -45,20 +84,17 @@ export const ModalCadastroProfessor = ({
                 type="text"
                 placeholder="Nome do professor"
                 {...register("nome")}
-                required
               ></InputBg>
               <Spacer>
                 <InputSm
                   type="number"
                   placeholder="Salário (R$)"
                   {...register("salario")}
-                  required
                 ></InputSm>
                 <InputMd
                   type="number"
                   placeholder="Número de CPF"
                   {...register("cpf")}
-                  required
                 ></InputMd>
               </Spacer>
 
@@ -66,7 +102,6 @@ export const ModalCadastroProfessor = ({
                 type="text"
                 placeholder="Especialidade"
                 {...register("especialidade")}
-                required
               ></InputBg>
             </FormContent>
             <Actions>
