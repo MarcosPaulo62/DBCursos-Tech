@@ -15,13 +15,13 @@ export default function Navbar() {
             <ScrollLink to="initial-page" smooth={true} duration={500}>
               Home
             </ScrollLink>
-            <ScrollLink to="differentials" smooth={true} duration={500}>
+            <ScrollLink to="differentials" smooth={true} duration={500} offset={-50}>
               Diferenciais
             </ScrollLink>
-            <ScrollLink to="about" smooth={true} duration={500}>
+            <ScrollLink to="about" smooth={true} duration={500} offset={-50}>
               Sobre
             </ScrollLink>
-            <ScrollLink to="contact" smooth={true} duration={500}>
+            <ScrollLink to="contact" smooth={true} duration={500} offset={-50}>
               Contato
             </ScrollLink>
             <button onClick={() => navigate("/login")}>Entrar</button>
