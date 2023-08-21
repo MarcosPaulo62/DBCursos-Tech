@@ -103,7 +103,7 @@ export default function ListagemItens({
       <div className="header">
         <h2>{headerTitle}</h2>
         <div>
-          {isAdmin && <button>Adicionar novo</button>}
+          {/* {isAdmin && <button>Adicionar novo</button>} */}
           <input
             type="text"
             name="search"

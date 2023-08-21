@@ -166,9 +166,9 @@ export default function InformationCardDashboard({
             </StyledTag>
             {localStorage.getItem("cargo") === "admin" && (
               <div className="buttons">
-                <button className="editar" type="submit">
+                {/* <button className="editar" type="submit">
                   Editar
-                </button>
+                </button> */}
                 <button
                   className="remover"
                   type="submit"
