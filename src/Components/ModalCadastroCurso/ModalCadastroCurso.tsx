@@ -13,6 +13,7 @@ import {
   Button,
   FormContent,
   ComboBox,
+  ComboBoxMd,
 } from "./style";
 import Modal from "@mui/material/Modal";
 import { Teacher } from "../../model";
@@ -114,12 +115,12 @@ export const ModalCadastroCurso = ({
                   {...register("cargaHoraria")}
                 ></InputMd>
 
-                <ComboBox placeholder="Período" {...register("periodo")}>
+                <ComboBoxMd placeholder="Período" {...register("periodo")}>
                   <option value="">Selecione um período</option>
                   <option value="MANHA">Manhã</option>
                   <option value="TARDE">Tarde</option>
                   <option value="NOITE">Noite</option>
-                </ComboBox>
+                </ComboBoxMd>
               </Spacer>
 
               <InputBg

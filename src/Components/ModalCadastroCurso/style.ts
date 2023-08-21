@@ -109,4 +109,15 @@ export const ComboBox = styled.select`
   font-weight: 300;
   background-color: #fff;
 `;
+export const ComboBoxMd = styled.select`
+  all: unset;
+  border-radius: 0.5rem;
+  border: 1px solid #504c4c;
+  padding: 1rem;
+  padding-right: 2rem;
+  font-size: 1rem;
+  font-weight: 300;
+  background-color: #fff;
+  margin-left: 1.2rem;
+`;
 
