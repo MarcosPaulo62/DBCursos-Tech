@@ -1,18 +1,12 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Outlet,
-  Navigate,
-} from "react-router-dom";
-import { Login } from "./pages/login/Login";
-import { SignUp } from "./pages/signUp/SignUp";
-import { Dashboard } from "./pages/dashboard/Dashboard";
+import {BrowserRouter, Routes, Route, Outlet, Navigate} from "react-router-dom";
+import {Login} from "./pages/login/Login";
+import {SignUp} from "./pages/signUp/SignUp";
+import {Dashboard} from "./pages/dashboard/Dashboard";
 import Home from "./pages/home/Home";
-import { DashboardAlunos } from "./pages/dashboardAlunos/DashboardAlunos";
-import { DashboardCursos } from "./pages/dashboardCursos/DashboardCursos";
-import { DashboardProfessores } from "./pages/dashboardProfessores/DashboardProfessores";
-import { DashboardInfo } from "./pages/dashboardInfo/DashboardInfo";
+import {DashboardAlunos} from "./pages/dashboardAlunos/DashboardAlunos";
+import {DashboardCursos} from "./pages/dashboardCursos/DashboardCursos";
+import {DashboardProfessores} from "./pages/dashboardProfessores/DashboardProfessores";
+import {DashboardInfo} from "./pages/dashboardInfo/DashboardInfo";
 import NotFound from "./pages/notfound/NotFound";
 
 function ProtectedRoutes() {
@@ -22,7 +16,7 @@ function ProtectedRoutes() {
 
 function TeacherArea() {
   const role = localStorage.getItem("cargo");
-  return role === "aluno" || role === "admin" ? <Outlet /> : <Navigate to={"/dashboard"} />;
+  return role === "aluno" || role === "admin" || role === "professor" ? <Outlet /> : <Navigate to={"/dashboard"} />;
 }
 
 function StudentArea() {

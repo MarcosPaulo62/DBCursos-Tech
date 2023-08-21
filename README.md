@@ -19,7 +19,7 @@ Tarefa avaliativa do Programa Vem Ser, 12ª Edição.
 </p>
 
 <p align="center">
-  <a href="https://ignite-todo-silk.vercel.app/" target="_blank">➡️ Acesse o deploy!</a>
+  <a href="https://dbcursos-tech.vercel.app/" target="_blank">➡️ Acesse o deploy!</a>
 </p>
 
 ## 🚀 Tecnologias
@@ -54,4 +54,4 @@ A DBCursos Tech é uma plataforma educacional que pode ser acessada por alunos e
 
 <a href="https://www.figma.com/file/dcERvcVZvfxlD0HufLWlUl/DBCursos?type=design&node-id=1%3A22&mode=design&t=jBuObXNYjwQE4Fyr-1">Veja aqui</a> o projeto no Figma.
 
-[VEja aqui](https://trello.com/b/eThYVSjZ/kanban-dbcursos-tech) o Trello.
+[Veja aqui](https://trello.com/b/eThYVSjZ/kanban-dbcursos-tech) o Trello.
