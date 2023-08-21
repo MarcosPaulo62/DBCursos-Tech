@@ -10,7 +10,7 @@ export function DashboardCursos() {
       <NavbarDashboard role={role ? role : ""} />
       <div className="lista-container">
         <ListagemItens
-          isAdmin={role == "admin" ? true : false}
+          isAdmin={role === "admin" ? true : false}
           typeItems="curso"
         />
       </div>

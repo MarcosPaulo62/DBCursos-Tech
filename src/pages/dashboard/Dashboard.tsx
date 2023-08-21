@@ -17,9 +17,9 @@ export function Dashboard() {
       <div className="body">
         <h2>
           Área do{" "}
-          {role == "aluno"
+          {role === "aluno"
             ? " Aluno"
-            : role == "admin"
+            : role === "admin"
             ? " Administrador"
             : " Professor"}
         </h2>
@@ -29,12 +29,12 @@ export function Dashboard() {
             <Link to="/dashboard/cursos">
               <CardHome cargo="Cursos" image={curso} />
             </Link>
-            {(role == "professor" || role == "admin") && (
+            {(role === "professor" || role === "admin") && (
               <Link to="/dashboard/alunos">
                 <CardHome cargo="Alunos" image={aluna} />
               </Link>
             )}
-            {(role == "aluno" || role == "admin") && (
+            {(role === "aluno" || role === "admin") && (
               <Link to="/dashboard/professores">
                 <CardHome cargo="Professores" image={professor} />
               </Link>

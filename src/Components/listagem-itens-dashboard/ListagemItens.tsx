@@ -1,6 +1,10 @@
 import { Eye } from "@phosphor-icons/react";
 import { StyledListagemContainer } from "./style";
 import { Pagination } from "@mui/material";
+import { ModalCadastroProfessor } from "../ModalCadastroProfessor/ModalCadastroProfessor";
+import { ModalCadastroAluno } from "../ModalCadastroAluno/ModalCadastroAluno";
+import { ModalCadastroCurso } from "../ModalCadastroCurso/ModalCadastroCurso";
+import { useState } from "react";
 
 interface ListagemItensProps {
   isAdmin: Boolean;
@@ -11,6 +15,23 @@ export default function ListagemItens({
   isAdmin,
   typeItems,
 }: ListagemItensProps) {
+  const [openAluno, setOpenAluno] = useState(false);
+  const [openProfessor, setOpenProfessor] = useState(false);
+  const [openCurso, setOpenCurso] = useState(false);
+  const handleClick = () => {
+    switch (typeItems) {
+      case "aluno":
+        setOpenAluno(true);
+        break;
+      case "professor":
+        setOpenProfessor(true);
+        break;
+      case "curso":
+        setOpenCurso(true);
+        break;
+    }
+  };
+
   const arrayAlunos = [
     { nome: "Gustavo Guanabara", matricula: "48654765" },
     { nome: "Vitor Nunes", matricula: "4657421" },
@@ -75,68 +96,82 @@ export default function ListagemItens({
   }
 
   return (
-    <StyledListagemContainer>
-      <div className="header">
-        <h2>{headerTitle}</h2>
-        <div>
-          {isAdmin && <button>Adicionar novo</button>}
-          <input
-            type="text"
-            name="search"
-            id="search"
-            placeholder={inputPlaceholder}
-          />
+    <>
+      <StyledListagemContainer>
+        <div className="header">
+          <h2>{headerTitle}</h2>
+          <div>
+            {isAdmin && <button onClick={handleClick}>Adicionar novo</button>}
+            <input
+              type="text"
+              name="search"
+              id="search"
+              placeholder={inputPlaceholder}
+            />
+          </div>
         </div>
-      </div>
 
-      <table>
-        <thead>
-          <tr>
-            <th>{firstHeaderTable}</th>
-            <th>{secondHeaderTable}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {(() => {
-            switch (typeItems) {
-              case "aluno":
-                return arrayAlunos.map((item) => (
-                  <tr key={item.matricula}>
-                    <td>
-                      {item.nome}
-                      <Eye size={32} weight="thin" />
-                    </td>
-                    <td>{item.matricula}</td>
-                  </tr>
-                ));
-              case "professor":
-                return arrayProfessores.map((item) => (
-                  <tr key={item.nome}>
-                    <td>
-                      {item.nome}
-                      <Eye size={32} weight="thin" />
-                    </td>
-                    <td>{item.especialidade}</td>
-                  </tr>
-                ));
-              case "curso":
-                return arrayCursos.map((item) => (
-                  <tr key={item.nome}>
-                    <td>
-                      {item.nome}
-                      <Eye size={32} weight="thin" />
-                    </td>
-                    <td>{item.periodo}</td>
-                  </tr>
-                ));
-              default:
-                return null;
-            }
-          })()}
-        </tbody>
-      </table>
+        <table>
+          <thead>
+            <tr>
+              <th>{firstHeaderTable}</th>
+              <th>{secondHeaderTable}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {(() => {
+              switch (typeItems) {
+                case "aluno":
+                  return arrayAlunos.map((item) => (
+                    <tr key={item.matricula}>
+                      <td>
+                        {item.nome}
+                        <Eye size={32} weight="thin" />
+                      </td>
+                      <td>{item.matricula}</td>
+                    </tr>
+                  ));
+                case "professor":
+                  return arrayProfessores.map((item) => (
+                    <tr key={item.nome}>
+                      <td>
+                        {item.nome}
+                        <Eye size={32} weight="thin" />
+                      </td>
+                      <td>{item.especialidade}</td>
+                    </tr>
+                  ));
+                case "curso":
+                  return arrayCursos.map((item) => (
+                    <tr key={item.nome}>
+                      <td>
+                        {item.nome}
+                        <Eye size={32} weight="thin" />
+                      </td>
+                      <td>{item.periodo}</td>
+                    </tr>
+                  ));
+                default:
+                  return null;
+              }
+            })()}
+          </tbody>
+        </table>
 
-      <Pagination count={10} color="primary" />
-    </StyledListagemContainer>
+        <Pagination count={10} color="primary" />
+      </StyledListagemContainer>
+      <ModalCadastroProfessor
+        open={openProfessor}
+        onClose={() => setOpenProfessor(false)}
+      />
+      <ModalCadastroAluno
+        open={openAluno}
+        onClose={() => setOpenAluno(false)}
+      />
+      <ModalCadastroCurso
+        open={openCurso}
+        onClose={() => setOpenCurso(false)}
+      />
+    </>
   );
 }
