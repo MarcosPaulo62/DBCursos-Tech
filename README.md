@@ -19,7 +19,7 @@ Tarefa avaliativa do Programa Vem Ser, 12ª Edição.
 </p>
 
 <p align="center">
-  <a href="https://ignite-todo-silk.vercel.app/" target="_blank">➡️ Acesse o deploy!</a>
+  <a href="https://dbcursos-tech.vercel.app/" target="_blank">➡️ Acesse o deploy!</a>
 </p>
 
 ## 🚀 Tecnologias
