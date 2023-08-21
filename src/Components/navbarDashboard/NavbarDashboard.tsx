@@ -35,7 +35,7 @@ export function NavbarDashboard({ role }: iNavbarhDashboard) {
   const userLogado = localStorage.getItem("nome");
 
   return (
-    <NavbarDashboardWrapper>
+    <NavbarDashboardWrapper >
       <div>
         <img className="logo" src={Logo} alt="logo da DBCursos Tech" onClick={() => navigate("/")} />
         <div className="greeting">

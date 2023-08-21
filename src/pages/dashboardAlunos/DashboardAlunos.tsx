@@ -10,7 +10,7 @@ export function DashboardAlunos() {
   return (
     <DashboardWrapper>
       <NavbarDashboard role={role ? role : ""} />
-      <div className="lista-container">
+      <div className="lista-container" data-testid="listagem-itens-component">
         <ListagemItens
           isAdmin={role == "admin" ? true : false}
           typeItems="aluno"
