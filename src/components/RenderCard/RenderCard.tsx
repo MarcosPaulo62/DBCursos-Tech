@@ -27,7 +27,7 @@ export const RenderCard = () => {
       </>
     );
   } else {
-    conteudo = <h1>Ações bloqueadas</h1>;
+    conteudo = <h1 data-testid='error-msg'>Ações bloqueadas</h1>;
   }
   return (
     <>
