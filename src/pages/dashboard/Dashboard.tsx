@@ -1,4 +1,4 @@
-import { CardHome } from "../../Components/CardHome/CardHome";
+import { CardHome } from "../../Components/cardHome/CardHome";
 import { NavbarDashboard } from "../../Components/navbarDashboard/NavbarDashboard";
 import { Welcome } from "../../Components/welcome/Welcome";
 import EventsDashboard from "../../Components/eventsDashboard/EventsDashboard";
