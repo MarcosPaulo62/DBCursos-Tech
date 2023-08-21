@@ -99,7 +99,7 @@ export default function ListagemItens({
   }
 
   return (
-    <StyledListagemContainer>
+    <StyledListagemContainer data-testid='lista-cursos'>
       <div className="header">
         <h2>{headerTitle}</h2>
         <div>

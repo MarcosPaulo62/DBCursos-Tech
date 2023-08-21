@@ -2,7 +2,7 @@ import {render, screen} from "@testing-library/react";
 import {NavbarDashboard} from "./NavbarDashboard";
 import {ThemeProvider} from "styled-components";
 import {ColorsTheme} from "../../styles/global";
-import {BrowserRouter, MemoryRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 
 describe("Navbar dashboard tests", () => {
   test("Should render a teacher navbar", () => {

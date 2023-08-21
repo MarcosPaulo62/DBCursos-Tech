@@ -8,7 +8,7 @@ export function DashboardCursos() {
 
   return (
     <DashboardWrapper>
-      <NavbarDashboard role={role ? role : ""} />
+      <NavbarDashboard role={role ? role : ""} data-testid="navbar-dashboard"/>
       <div className="lista-container">
         <ListagemItens
           isAdmin={role == "admin" ? true : false}
