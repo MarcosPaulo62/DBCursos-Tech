@@ -1,8 +1,6 @@
 import { styled } from "styled-components";
 
 export const StyledListagemContainer = styled.section`
-  width: 70%;
-  margin: 2rem auto;
   display: flex;
   flex-direction: column;
   align-items: center;

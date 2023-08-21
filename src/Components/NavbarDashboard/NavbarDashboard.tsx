@@ -1,30 +1,43 @@
 import { SignOut, UserCircle } from "@phosphor-icons/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/Logo_Branco.png";
 import { NavbarDashboardWrapper } from "./styles";
-import { useNavigate } from "react-router-dom";
 
 export interface iNavbarhDashboard {
   role: string;
 }
 
 export function NavbarDashboard({ role }: iNavbarhDashboard) {
-  const [page, setPage] = useState("home");
+  const [page, setPage] = useState("");
   const userRole = role;
   const navigate = useNavigate();
+  const location = useLocation();
 
-  function returnGreeting(role: string) {
-    switch (role) {
-      case "aluno":
-        return "Olá, aluno(a)!";
-      case "professor":
-        return "Olá, professor(a)!";
-      case "admin":
-        return "Olá, admin!";
+  useEffect(() => {
+    getPathname();
+  }, []);
+
+  function getPathname() {
+    switch (location.pathname) {
+      case "/dashboard":
+        setPage("home");
+        break;
+      case "/dashboard/cursos":
+        setPage("cursos");
+        break;
+      case "/dashboard/alunos":
+        setPage("alunos");
+        break;
+      case "/dashboard/professores":
+        setPage("professores");
+        break;
       default:
         break;
     }
   }
+
+  const userLogado = localStorage.getItem("nome");
 
   return (
     <NavbarDashboardWrapper>
@@ -32,25 +45,34 @@ export function NavbarDashboard({ role }: iNavbarhDashboard) {
         <img className="logo" src={Logo} alt="logo da DBCursos Tech" />
         <div className="greeting">
           <UserCircle size={48} />
-          <span>{returnGreeting(role)}</span>
+          <span>Olá, {userLogado}!</span>
         </div>
         {userRole.toLocaleLowerCase() === "aluno" && (
           <div className="links">
             <button
               className={page === "home" ? "onfocus" : ""}
-              onClick={() => setPage("home")}
+              onClick={() => {
+                setPage("home");
+                navigate("/dashboard");
+              }}
             >
               Home
             </button>
             <button
               className={page === "cursos" ? "onfocus" : ""}
-              onClick={() => setPage("cursos")}
+              onClick={() => {
+                setPage("cursos");
+                navigate("/dashboard/cursos");
+              }}
             >
               Cursos
             </button>
             <button
               className={page === "professores" ? "onfocus" : ""}
-              onClick={() => setPage("professores")}
+              onClick={() => {
+                setPage("professores");
+                navigate("/dashboard/professores");
+              }}
             >
               Professores
             </button>
@@ -60,19 +82,28 @@ export function NavbarDashboard({ role }: iNavbarhDashboard) {
           <div className="links">
             <button
               className={page === "home" ? "onfocus" : ""}
-              onClick={() => setPage("home")}
+              onClick={() => {
+                setPage("home");
+                navigate("/dashboard");
+              }}
             >
               Home
             </button>
             <button
               className={page === "cursos" ? "onfocus" : ""}
-              onClick={() => setPage("cursos")}
+              onClick={() => {
+                setPage("cursos");
+                navigate("/dashboard/cursos");
+              }}
             >
               Cursos
             </button>
             <button
               className={page === "alunos" ? "onfocus" : ""}
-              onClick={() => setPage("alunos")}
+              onClick={() => {
+                setPage("alunos");
+                navigate("/dashboard/alunos");
+              }}
             >
               Alunos
             </button>
@@ -82,35 +113,50 @@ export function NavbarDashboard({ role }: iNavbarhDashboard) {
           <div className="links">
             <button
               className={page === "home" ? "onfocus" : ""}
-              onClick={() => setPage("home")}
+              onClick={() => {
+                setPage("home");
+                navigate("/dashboard");
+              }}
             >
               Home
             </button>
             <button
               className={page === "cursos" ? "onfocus" : ""}
-              onClick={() => setPage("cursos")}
+              onClick={() => {
+                setPage("cursos");
+                navigate("/dashboard/cursos");
+              }}
             >
               Cursos
             </button>
             <button
               className={page === "alunos" ? "onfocus" : ""}
-              onClick={() => setPage("alunos")}
+              onClick={() => {
+                setPage("alunos");
+                navigate("/dashboard/alunos");
+              }}
             >
               Alunos
             </button>
             <button
               className={page === "professores" ? "onfocus" : ""}
-              onClick={() => setPage("professores")}
+              onClick={() => {
+                setPage("professores");
+                navigate("/dashboard/professores");
+              }}
             >
               Professores
             </button>
           </div>
         )}
       </div>
-      <div className="logout" onClick={() => {
-        navigate("/");
-        localStorage.clear();
-      }}>
+      <div
+        className="logout"
+        onClick={() => {
+          navigate("/");
+          localStorage.clear();
+        }}
+      >
         <SignOut size={32} />
         <span>Sair</span>
       </div>

@@ -218,7 +218,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
               setShowPassword(!showPassword);
             }}
           >
-            {showPassword ? <Eye size={32} /> : <EyeSlash size={32} />}
+            {showPassword ? <EyeSlash size={32} /> : <Eye size={32} />}
           </div>
         </div>
         <div className={isLogin ? "displayNone" : "input-container"}>
@@ -235,7 +235,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
               setShowConfirmPassword(!showConfirmPassword);
             }}
           >
-            {showConfirmPassword ? <Eye size={32} /> : <EyeSlash size={32} />}
+            {showConfirmPassword ? <EyeSlash size={32} /> : <Eye size={32} />}
           </div>
         </div>
         <button className="submit" type="submit">

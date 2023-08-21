@@ -17,6 +17,11 @@ export default function ListagemItens({
     { nome: "Valéria Almeida", matricula: "445545" },
     { nome: "Felipe Deschamps", matricula: "854654" },
     { nome: "Micael Mota", matricula: "854111111" },
+    { nome: "Gustavo Guanabara", matricula: "48654765" },
+    { nome: "Vitor Nunes", matricula: "4657421" },
+    { nome: "Valéria Almeida", matricula: "445545" },
+    { nome: "Felipe Deschamps", matricula: "854654" },
+    { nome: "Micael Mota", matricula: "854111111" },
   ];
   const arrayCursos = [
     { nome: "Python avançado", periodo: "Manhã" },
@@ -24,8 +29,18 @@ export default function ListagemItens({
     { nome: "React Redux", periodo: "Noite" },
     { nome: "Node.js", periodo: "Tarde" },
     { nome: "Java + Spring ", periodo: "Noite" },
+    { nome: "Python avançado", periodo: "Manhã" },
+    { nome: "MySQL", periodo: "Manhã" },
+    { nome: "React Redux", periodo: "Noite" },
+    { nome: "Node.js", periodo: "Tarde" },
+    { nome: "Java + Spring ", periodo: "Noite" },
   ];
   const arrayProfessores = [
+    { nome: "Gustavo Guanabara", especialidade: "Matemática" },
+    { nome: "Vitor Nunes", especialidade: "Geoprocessamento" },
+    { nome: "Valéria Almeida", especialidade: "Português e Literatura" },
+    { nome: "Felipe Deschamps", especialidade: "DevOps" },
+    { nome: "Micael Mota", especialidade: "Agile" },
     { nome: "Gustavo Guanabara", especialidade: "Matemática" },
     { nome: "Vitor Nunes", especialidade: "Geoprocessamento" },
     { nome: "Valéria Almeida", especialidade: "Português e Literatura" },
@@ -121,7 +136,7 @@ export default function ListagemItens({
         </tbody>
       </table>
 
-      <Pagination count={10} color="secondary" />
+      <Pagination count={10} color="primary" />
     </StyledListagemContainer>
   );
 }

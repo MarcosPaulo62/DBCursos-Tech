@@ -1,4 +1,4 @@
-import Navlink from "../navlink/Navlink";
+import {Link} from "react-router-dom";
 import Logo from "../logo/Logo";
 import Navbar from "../navbar/Navbar";
 import {HeaderWrapper} from "./style";
@@ -6,10 +6,10 @@ import {HeaderWrapper} from "./style";
 export default function Header() {
   return (
     <>
-      <HeaderWrapper>
-        <Navlink to="/">
+      <HeaderWrapper id="header">
+        <Link to="/">
           <Logo />
-        </Navlink>
+        </Link>
         <Navbar />
       </HeaderWrapper>
     </>

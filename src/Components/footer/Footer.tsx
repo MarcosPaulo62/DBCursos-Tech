@@ -1,11 +1,8 @@
-import { StyledSpan } from "../../styles/typography";
-import { StyledContainerFooter } from "./style";
-import {
-  LinkedinLogo,
-  InstagramLogo,
-  YoutubeLogo,
-} from "@phosphor-icons/react";
-import xtwitter from "../../assets/x-twitter.svg";
+import {StyledSpan} from "../../styles/typography";
+import {StyledContainerFooter} from "./style";
+import {LinkedinLogo, InstagramLogo, YoutubeLogo} from "@phosphor-icons/react";
+import {Link as ScrollLink} from "react-scroll";
+import {Link} from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -15,32 +12,44 @@ export default function Footer() {
           <StyledSpan fontSize="md">
             <strong>DBCursos Tech</strong>
           </StyledSpan>
-          <StyledSpan fontSize="md">Home</StyledSpan>
-          <StyledSpan fontSize="md">Sobre</StyledSpan>
-          <StyledSpan fontSize="md">Cursos</StyledSpan>
+          <div>
+            <ScrollLink to="header" smooth={true} duration={500}>
+              Home
+            </ScrollLink>
+          </div>
         </div>
         <div className="bdcursos-institucional">
           <StyledSpan fontSize="md">
             <strong>Institucional</strong>
           </StyledSpan>
-          <StyledSpan fontSize="md">Administrador</StyledSpan>
-          <StyledSpan fontSize="md">Aluno</StyledSpan>
-          <StyledSpan fontSize="md">Professor</StyledSpan>
+          <div>
+            <Link to="/dashboard">Administrador</Link>
+            <Link to="/dashboard">Aluno</Link>
+            <Link to="/dashboard">Professor</Link>
+          </div>
         </div>
       </div>
       <div className="contacts">
-        <StyledSpan className="span-footer" fontSize="md">
+        {/* <StyledSpan className="span-footer" fontSize="md">
           <strong>Inscreva-se na nossa newsletter</strong>
         </StyledSpan>
-        <input type="email" placeholder="Seu email" />
+        <input type="email" placeholder="Seu email" /> */}
         <StyledSpan className="span-footer" fontSize="md">
           <strong>Nos encontre nas redes sociais</strong>
         </StyledSpan>
         <div className="social-network">
-          <LinkedinLogo size={32} color="#ffffff" />
-          <InstagramLogo size={32} color="#ffffff" />
-          <YoutubeLogo size={32} color="#ffffff" />
-          <img src={xtwitter} alt="logo xtwitter" />
+          <Link to="https://www.linkedin.com/company/dbc-company/mycompany/" target="_blank">
+            <LinkedinLogo size={32} />
+          </Link>
+          <Link to="https://www.instagram.com/dbc.company/" target="_blank">
+            <InstagramLogo size={32} />
+          </Link>
+          <Link to="https://www.youtube.com/channel/UCjTW7OUdu4WdNH-Fu27I2VQ" target="_blank">
+            <YoutubeLogo size={32} />
+          </Link>
+          <Link to="https://www.dbccompany.com.br/" target="_blank">
+            <i className="fa-brands fa-x-twitter"></i>
+          </Link>
         </div>
       </div>
     </StyledContainerFooter>

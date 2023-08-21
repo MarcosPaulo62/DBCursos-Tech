@@ -1,12 +1,23 @@
-import {AboutSectionWrapper, DoubtsFormSection, HeroContent, HeroWrapper, RegisterSectionWrapper, SectionCardsWrapper, SectionTitle} from "./style";
+import {
+  AboutSectionWrapper,
+  ButtonWrapper,
+  DoubtsFormSection,
+  HeroContent,
+  HeroWrapper,
+  RegisterSectionWrapper,
+  SectionCardsWrapper,
+  SectionTitle,
+} from "./style";
 import Header from "../../Components/header/Header";
-import Button from "../../Components/buttonHeader/Button";
 
 import {useForm} from "react-hook-form";
 import {toast} from "react-toastify";
 
 import studentsImage from "../../assets/students-img.png";
 import codeGirl from "../../assets/codegirl.png";
+import LandingPageCard from "../../Components/landing-page-card/LandingPageCard";
+import Footer from "../../Components/footer/Footer";
+import {useNavigate} from "react-router-dom";
 
 interface iFormContact {
   name: string;
@@ -15,12 +26,9 @@ interface iFormContact {
 }
 
 export default function Home() {
-  const {
-    handleSubmit,
-    reset,
-    register,
-    formState: {errors},
-  } = useForm<iFormContact>();
+  const {handleSubmit, reset, register} = useForm<iFormContact>();
+
+  const navigate = useNavigate();
 
   function onSubmit(data: iFormContact) {
     toast.success("Formulário enviado com sucesso!", {
@@ -48,18 +56,19 @@ export default function Home() {
           </div>
         </HeroContent>
       </HeroWrapper>
-      <SectionCardsWrapper>
+      <SectionCardsWrapper id="differentials">
         <SectionTitle>Diferenciais da DBCursos Tech</SectionTitle>
+        <LandingPageCard />
       </SectionCardsWrapper>
       <RegisterSectionWrapper>
         <img src={studentsImage} alt="Imagem ilustrativa de 5 pessoas se formando em um curso" />
         <div>
           <h3>É fácil começar a aprender</h3>
           <p>Com a DBCursosTech, você aprende do melhor jeito. Faça já sua matrícula!</p>
-          <Button>Inscreva-se</Button>
+          <ButtonWrapper onClick={() => navigate("/cadastro")}>Inscreva-se</ButtonWrapper>
         </div>
       </RegisterSectionWrapper>
-      <AboutSectionWrapper>
+      <AboutSectionWrapper id="about">
         <SectionTitle>Sobre a instituição</SectionTitle>
         <div className="about-container">
           <div className="about-content">
@@ -88,7 +97,7 @@ export default function Home() {
           </div>
         </div>
       </AboutSectionWrapper>
-      <DoubtsFormSection>
+      <DoubtsFormSection id="contact">
         <div>
           <img
             src={codeGirl}
@@ -99,10 +108,11 @@ export default function Home() {
             <input type="text" placeholder="Seu nome" id="name" {...register("name", {required: true})} />
             <input type="email" placeholder="Seu email" id="email" {...register("email", {required: true})} />
             <textarea placeholder="Mensagem" id="message" {...register("message", {required: true})} />
-            <Button type="submit">Enviar</Button>
+            <ButtonWrapper type="submit">Enviar</ButtonWrapper>
           </form>
         </div>
       </DoubtsFormSection>
+      <Footer />
     </>
   );
 }
