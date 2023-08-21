@@ -102,6 +102,15 @@ export function NavbarDashboard({ role }: iNavbarhDashboard) {
             >
               Alunos
             </button>
+            <button
+              className={page === "professores" ? "onfocus" : ""}
+              onClick={() => {
+                setPage("professores");
+                navigate("/dashboard/professores");
+              }}
+            >
+              Professores
+            </button>
           </div>
         )}
         {userRole.toLocaleLowerCase() === "admin" && (
