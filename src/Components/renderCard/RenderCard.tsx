@@ -1,4 +1,4 @@
-import { CardHome } from "../CardHome/CardHome";
+import { CardHome } from "../cardHome/CardHome";
 import { Content } from "./style";
 
 export const RenderCard = () => {

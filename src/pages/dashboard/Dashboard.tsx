@@ -1,13 +1,12 @@
-import { CardHome } from "../../Components/CardHome/CardHome";
-import { NavbarDashboard } from "../../Components/NavbarDashboard/NavbarDashboard";
-import { Welcome } from "../../Components/Welcome/Welcome";
-import EventsDashboard from "../../Components/events-dashboard/EventsDashboard";
+import { CardHome } from "../../Components/cardHome/CardHome";
+import { NavbarDashboard } from "../../Components/navbarDashboard/NavbarDashboard";
+import { Welcome } from "../../Components/welcome/Welcome";
+import EventsDashboard from "../../Components/eventsDashboard/EventsDashboard";
 import { DashboardWrapper } from "./styles";
 import aluna from "../../assets/aluna.png";
 import professor from "../../assets/professor.png";
 import curso from "../../assets/curso-online.png";
 import { Link } from "react-router-dom";
-import React from "react";
 
 export function Dashboard() {
   const role = localStorage.getItem("cargo");

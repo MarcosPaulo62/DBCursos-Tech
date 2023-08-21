@@ -15,7 +15,7 @@ import {toast} from "react-toastify";
 
 import studentsImage from "../../assets/students-img.png";
 import codeGirl from "../../assets/codegirl.png";
-import LandingPageCard from "../../Components/landing-page-card/LandingPageCard";
+import LandingPageCard from "../../Components/landingPageCard/LandingPageCard";
 import Footer from "../../Components/footer/Footer";
 import {useNavigate} from "react-router-dom";
 
