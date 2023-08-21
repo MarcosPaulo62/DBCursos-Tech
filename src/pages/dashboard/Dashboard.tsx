@@ -12,7 +12,11 @@ export function Dashboard() {
   const role = localStorage.getItem("cargo");
 
   return (
+    <>
     <DashboardWrapper>
+<<<<<<< HEAD
+      <NavbarDashboard role="admin" /> 
+=======
       <NavbarDashboard role={role ? role : ""} />
       <div className="body">
         <h2>
@@ -43,6 +47,9 @@ export function Dashboard() {
           <EventsDashboard />
         </div>
       </div>
+>>>>>>> cb0e96467fa9e5caf4be900e15de362b89038765
     </DashboardWrapper>
+    
+    </>
   );
 }
