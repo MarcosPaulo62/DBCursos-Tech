@@ -13,26 +13,79 @@ import {
   FormContent,
 } from "./style";
 import Modal from "@mui/material/Modal";
+import { toast } from "react-toastify";
+import { createStudent } from "../../api";
 
 export type ModalCadastroAlunoProps = {
   open: boolean;
   onClose?: () => void;
 };
-
+type FormProps = {
+  nome: string;
+  cpf: string;
+  numeroDeMatricula: string;
+  idade: string;
+  email: string;
+};
 export const ModalCadastroAluno = ({
   open,
   onClose,
 }: ModalCadastroAlunoProps) => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const { register, handleSubmit, reset } = useForm<FormProps>();
+
+  const onSubmit = async (data: FormProps) => {
+    if (
+      data.nome === "" ||
+      data.cpf === "" ||
+      data.email === "" ||
+      data.numeroDeMatricula === "" ||
+      data.idade === ""
+    ) {
+      toast.warning("É necessário preencher todos os campos!", {
+        theme: "dark",
+        position: "top-center",
+      });
+    } else {
+      try {
+        await createStudent({ ...data });
+        toast.success("Cadastro realizado com sucesso!", {
+          theme: "dark",
+          position: "top-center",
+        });
+        reset({
+          nome: "",
+          cpf: "",
+          idade: "",
+          numeroDeMatricula: "",
+          email: "",
+        });
+        onClose?.();
+      } catch {
+        toast.warning("Cadastro já existente!", {
+          theme: "dark",
+          position: "top-center",
+        });
+        reset({
+          nome: "",
+          cpf: "",
+          idade: "",
+          numeroDeMatricula: "",
+          email: "",
+        });
+      }
+    }
   };
+
   return (
     <>
       <Modal
         open={open}
         onClose={onClose}
-        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         <Content>
           <XCircle size={48} onClick={onClose}></XCircle>
@@ -70,7 +123,7 @@ export const ModalCadastroAluno = ({
               <InputBg
                 type="number"
                 placeholder="Matrícula"
-                {...register("matricula")}
+                {...register("numeroDeMatricula")}
                 required
               ></InputBg>
             </FormContent>

@@ -14,7 +14,7 @@ import {
 } from "./style";
 import Modal from "@mui/material/Modal";
 import { toast } from "react-toastify";
-import { createTeacher } from "../../api/create-teacher";
+import { createTeacher } from "../../api/";
 
 type FormProps = {
   nome: string;
