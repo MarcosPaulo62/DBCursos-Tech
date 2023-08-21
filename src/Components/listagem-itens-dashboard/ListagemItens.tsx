@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { CursosContext } from "../../context/CursosContext";
 import { AlunosContext } from "../../context/AlunosContext";
 import { ProfessoresContext } from "../../context/ProfessoresContext";
+import { Link } from 'react-router-dom';
 
 interface ListagemItensProps {
   isAdmin: Boolean;
@@ -46,6 +47,14 @@ export default function ListagemItens({
 
   function handleSetPage(_: any, newPage: number) {
     setPage(newPage - 1);
+  }
+
+  const [searchValue, setSearchValue] = useState("");
+
+  function filterItems(items: any[]): any[] {
+    return items.filter((item) =>
+      item.nome.toLowerCase().includes(searchValue.toLowerCase())
+    );
   }
 
   function periodoCurso(periodo: string) {
@@ -100,6 +109,8 @@ export default function ListagemItens({
             name="search"
             id="search"
             placeholder={inputPlaceholder}
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
           />
         </div>
       </div>
@@ -113,45 +124,43 @@ export default function ListagemItens({
         </thead>
         <tbody>
           {(() => {
+            let filteredItems: any[] = [];
+
             switch (typeItems) {
               case "aluno":
-                return alunosData.map((aluno, index) => (
-                  <tr key={index}>
-                    <td>
-                      {aluno.nome ?? "Não informado"}
-                      <Eye size={32} weight="thin" />
-                    </td>
-                    <td>{aluno.numeroDeMatricula ?? "Não informado"}</td>
-                  </tr>
-                ));
+                filteredItems = filterItems(alunosData);
+                break;
               case "professor":
-                return professoresData.map((professor, index) => (
-                  <tr key={index}>
-                    <td>
-                      {professor.nome ?? "Não informado"}
-                      <Eye size={32} weight="thin" />
-                    </td>
-                    <td>{professor.especialidade ?? "Não informado"}</td>
-                  </tr>
-                ));
+                filteredItems = filterItems(professoresData);
+                break;
               case "curso":
-                const startIndex = currentPage * itemsPerPage;
-                const endIndex = startIndex + itemsPerPage;
-
-                const cursosDaPagina = cursosData.slice(startIndex, endIndex);
-
-                return cursosDaPagina.map((curso, index) => (
-                  <tr key={index}>
-                    <td>
-                      {curso.nome ?? "Não informado"}
-                      <Eye size={32} weight="thin" />
-                    </td>
-                    <td>{periodoCurso(curso.periodo)}</td>
-                  </tr>
-                ));
+                const startIndex: number = currentPage * itemsPerPage;
+                const endIndex: number = startIndex + itemsPerPage;
+                const cursosDaPagina: any[] = cursosData.slice(
+                  startIndex,
+                  endIndex
+                );
+                filteredItems = filterItems(cursosDaPagina);
+                break;
               default:
-                return null;
+                break;
             }
+
+            return filteredItems.map((item: any, index: number) => (
+              <tr key={index}>
+                <td>
+                  {item.nome ?? "Não informado"}
+                  <Link to={`/dashboard/${typeItems}/${item.idAluno ?? item.idProfessor ?? item.idCurso}`}>
+                    <Eye size={32} weight="thin" />
+                  </Link>                                      
+                </td>
+                <td>
+                  {typeItems === "curso"
+                    ? periodoCurso(item.periodo)
+                    : item.especialidade ?? "Não informado"}
+                </td>
+              </tr>
+            ));
           })()}
         </tbody>
       </table>

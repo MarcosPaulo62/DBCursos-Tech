@@ -82,6 +82,10 @@ export const StyledListagemContainer = styled.section`
       td {
         padding: 0.9rem 0;
         border-bottom: 1px solid #a8a8a8;
+
+        a{
+          color: #000;
+        }
       }
     }
   }
