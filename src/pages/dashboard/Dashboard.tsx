@@ -41,8 +41,8 @@ export function Dashboard() {
                 </Link>
               )}
             </div>
+            <EventsDashboard></EventsDashboard>
           </div>
-          <EventsDashboard></EventsDashboard>
         </div>
       </DashboardWrapper>
     </>
