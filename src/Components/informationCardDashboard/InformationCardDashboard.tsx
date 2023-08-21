@@ -38,14 +38,14 @@ export default function InformationCardDashboard({
   }
 
   useEffect(() => {
-    if (type == "aluno") {
+    if (type === "aluno") {
       listaAlunoById(id);
-    } else if (type == "curso") {
+    } else if (type === "curso") {
       listaCursoById(id);
-    } else if (type == "professor") {
+    } else if (type === "professor") {
       listaProfessorById(id);
     }
-    type == "curso" &&
+    type === "curso" &&
       cursoById?.idProfessor &&
       listaProfessorById(cursoById.idProfessor.toString());
   }, []);
@@ -55,10 +55,10 @@ export default function InformationCardDashboard({
   }
 
   function removeElement() {
-    type == "aluno" && deleteAlunoById(alunoById?.idAluno.toString());
-    type == "professor" &&
+    type === "aluno" && deleteAlunoById(alunoById?.idAluno.toString());
+    type === "professor" &&
       deleteProfessorById(professorById?.idProfessor.toString());
-    type == "curso" && deleteCursoById(cursoById?.idCurso.toString());
+    type === "curso" && deleteCursoById(cursoById?.idCurso.toString());
     voltarParaRotaAnterior();
   }
 
@@ -87,38 +87,38 @@ export default function InformationCardDashboard({
         <StyledInformationCardDashboard>
           <img
             src={
-              type == "aluno" ? student : type == "professor" ? teacher : course
+              type === "aluno" ? student : type === "professor" ? teacher : course
             }
             alt=""
           />
           <div>
             <StyledSpan className="title-information" fontSize="lg">
               <strong>
-                {type == "aluno"
+                {type === "aluno"
                   ? "Aluno"
-                  : type == "professor"
+                  : type === "professor"
                   ? "Professor"
                   : "Curso"}
                 :
               </strong>{" "}
-              {type == "aluno" && (alunoById?.nome ?? "Não informado")}
-              {type == "curso" && (cursoById?.nome ?? "Não informado")}
-              {type == "professor" && (professorById?.nome ?? "Não informado")}
+              {type === "aluno" && (alunoById?.nome ?? "Não informado")}
+              {type === "curso" && (cursoById?.nome ?? "Não informado")}
+              {type === "professor" && (professorById?.nome ?? "Não informado")}
             </StyledSpan>
             <div className="information-periodCh">
               <StyledSpan className="block-span" fontSize="lg">
                 <strong>
-                  {type == "aluno"
+                  {type === "aluno"
                     ? "Idade"
-                    : type == "professor"
+                    : type === "professor"
                     ? "Salário"
                     : "Turno"}
                   :
                 </strong>{" "}
-                {type == "aluno" && (alunoById?.idade ?? "Não informado")}
-                {type == "curso" &&
+                {type === "aluno" && (alunoById?.idade ?? "Não informado")}
+                {type === "curso" &&
                   (periodoCurso(cursoById?.periodo) ?? "Não informado")}
-                {type == "professor" &&
+                {type === "professor" &&
                   (professorById?.salario.toLocaleString("pt-BR", {
                     style: "currency",
                     currency: "BRL",
@@ -127,60 +127,67 @@ export default function InformationCardDashboard({
               </StyledSpan>
               <StyledSpan className="block-span" fontSize="lg">
                 <strong>
-                  {type == "aluno"
+                  {type === "aluno"
                     ? "CPF"
-                    : type == "professor"
+                    : type === "professor"
                     ? "CPF"
                     : "Carga horária"}
                   :
                 </strong>{" "}
-                {type == "aluno" && (alunoById?.cpf ?? "Não informado")}
-                {type == "curso" &&
+                {type === "aluno" && (alunoById?.cpf ?? "Não informado")}
+                {type === "curso" &&
                   (cursoById?.cargaHoraria ?? "Não informado")}
-                {type == "professor" && (professorById?.cpf ?? "Não informado")}
+                {type === "professor" && (professorById?.cpf ?? "Não informado")}
               </StyledSpan>
             </div>
-            {type != "professor" && (
+            {type !== "professor" && (
               <StyledSpan className="professor-tag" fontSize="lg">
-                <strong>{type == "aluno" ? "Email" : "Professor"}:</strong>{" "}
-                {type == "aluno" && alunoById?.email}
-                {type == "curso" && nomeProfessorById()}
+                <strong>{type === "aluno" ? "Email" : "Professor"}:</strong>{" "}
+                {type === "aluno" && alunoById?.email}
+                {type === "curso" && nomeProfessorById()}
               </StyledSpan>
             )}
             <StyledSpan className="description" fontSize="lg">
               <strong>
-                {type == "aluno"
+                {type === "aluno"
                   ? "Matrícula"
-                  : type == "professor"
+                  : type === "professor"
                   ? "Especialidade"
                   : "Descrição"}
                 :
               </strong>
             </StyledSpan>
             <StyledTag className="description">
-              {type == "aluno" &&
+              {type === "aluno" &&
                 (alunoById?.numeroDeMatricula ?? "Não informado")}
-              {type == "curso" && (cursoById?.descricao ?? "Não informado")}
-              {type == "professor" &&
+              {type === "curso" && (cursoById?.descricao ?? "Não informado")}
+              {type === "professor" &&
                 (professorById?.especialidade ?? "Não informado")}
             </StyledTag>
-            <div className="buttons">
-              <button className="editar" type="submit">
-                Editar
-              </button>
-              <button
-                className="remover"
-                type="submit"
-                onClick={() => setShowModal(true)}
-              >
-                Remover
-              </button>
-            </div>
+            {localStorage.getItem("cargo") === "admin" && (
+              <div className="buttons">
+                <button className="editar" type="submit">
+                  Editar
+                </button>
+                <button
+                  className="remover"
+                  type="submit"
+                  onClick={() => setShowModal(true)}
+                >
+                  Remover
+                </button>
+              </div>
+            )}
           </div>
         </StyledInformationCardDashboard>
       </StyledInformationCardDashboardContainer>
 
-      {showModal && <ConfirmExclusionCard setShowModal={setShowModal} removeConfirm={removeElement}/>}
+      {showModal && (
+        <ConfirmExclusionCard
+          setShowModal={setShowModal}
+          removeConfirm={removeElement}
+        />
+      )}
     </>
   );
 }

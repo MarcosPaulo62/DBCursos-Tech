@@ -19,22 +19,17 @@ export function NavbarDashboard({ role }: iNavbarhDashboard) {
   }, []);
 
   function getPathname() {
-    switch (location.pathname) {
-      case "/dashboard":
-        setPage("home");
-        break;
-      case "/dashboard/cursos":
-        setPage("cursos");
-        break;
-      case "/dashboard/alunos":
-        setPage("alunos");
-        break;
-      case "/dashboard/professores":
-        setPage("professores");
-        break;
-      default:
-        break;
-    }
+    const url = location.pathname;
+
+    if (url === "/dashboard") {
+      setPage("home");
+    } else if (url.includes("curso")) {
+      setPage("cursos");
+    } else if (url.includes("aluno")) {
+      setPage("alunos");
+    } else if (url.includes("professor")) {
+      setPage("professores");
+    } 
   }
 
   const userLogado = localStorage.getItem("nome");
@@ -42,7 +37,7 @@ export function NavbarDashboard({ role }: iNavbarhDashboard) {
   return (
     <NavbarDashboardWrapper>
       <div>
-        <img className="logo" src={Logo} alt="logo da DBCursos Tech" />
+        <img className="logo" src={Logo} alt="logo da DBCursos Tech" onClick={() => navigate("/")} />
         <div className="greeting">
           <UserCircle size={48} />
           <span>Olá, {userLogado}!</span>
