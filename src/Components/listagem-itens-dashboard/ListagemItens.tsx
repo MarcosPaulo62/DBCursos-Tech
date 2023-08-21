@@ -150,7 +150,7 @@ export default function ListagemItens({
               <tr key={index}>
                 <td>
                   {item.nome ?? "Não informado"}
-                  <Link to={`/dashboard/${typeItems}/${item.idAluno ?? item.idProfessor ?? item.idCurso}`}>
+                  <Link to={`/dashboard/${typeItems}/${item.idAluno ?? item.idCurso ?? item.idProfessor}`}> 
                     <Eye size={32} weight="thin" />
                   </Link>                                      
                 </td>

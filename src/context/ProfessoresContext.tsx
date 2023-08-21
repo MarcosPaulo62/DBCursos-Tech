@@ -6,6 +6,8 @@ interface iProfessorContext {
   listaProfessores: () => void;
   totalPaginasProf: number;
   listaProfessoresPagination: (page: number, pageSize: number) => void;
+  listaProfessorById: (id: string) => void;
+  professorById: iProfessor | undefined;
 }
 
 export const ProfessoresContext = createContext({} as iProfessorContext);
@@ -13,6 +15,7 @@ export const ProfessoresContext = createContext({} as iProfessorContext);
 export function ProfessoresProvider({ children }: iChildren) {
   const [professoresData, setProfessoresData] = useState<iProfessor[] | []>([]);
   const [totalPaginasProf, setTotalPaginasProf] = useState<number>(0);
+  const [professorById, setProfessorById] = useState<iProfessor | undefined>();
 
   const apiKey =
     "http://vemser-hml.dbccompany.com.br:39000/leticiasantosgonc/vemser-tf-3-03-springsecurity";
@@ -56,8 +59,34 @@ export function ProfessoresProvider({ children }: iChildren) {
     }
   };
 
+  async function listaProfessorById(id: string) {
+    const response = await fetch(`${apiKey}/professor/${id}`, {
+      headers: {
+        "Content-type": "aplication/json",
+        Authorization: `${localStorage.getItem("token")}`,
+      },
+    });
+    if (!response.ok) {
+      console.log("Erro ao fazer requisição!");
+      return;
+    }
+
+    const resposta = await response.json();
+
+    setProfessorById(resposta);
+  }
+
   return (
-    <ProfessoresContext.Provider value={{ professoresData, listaProfessores, totalPaginasProf, listaProfessoresPagination }}>
+    <ProfessoresContext.Provider
+      value={{
+        professoresData,
+        listaProfessores,
+        totalPaginasProf,
+        listaProfessoresPagination,
+        professorById,
+        listaProfessorById
+      }}
+    >
       {children}
     </ProfessoresContext.Provider>
   );
