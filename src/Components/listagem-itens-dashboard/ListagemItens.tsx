@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { CursosContext } from "../../context/CursosContext";
 import { AlunosContext } from "../../context/AlunosContext";
 import { ProfessoresContext } from "../../context/ProfessoresContext";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 interface ListagemItensProps {
   isAdmin: Boolean;
@@ -146,22 +146,31 @@ export default function ListagemItens({
                 break;
             }
 
-            return filteredItems.map((item: any, index: number) => (
-              <tr key={index}>
-                <td>
-                  {item.nome ?? "Não informado"}
-                  <Link to={`/dashboard/${typeItems}/${item.idAluno ?? item.idCurso ?? item.idProfessor}`}> 
-                    <Eye size={32} weight="thin" />
-                  </Link>                                      
-                </td>
-                <td>
-                  {typeItems === "curso"
-                    ? periodoCurso(item.periodo)
-                    : typeItems === "professor" ? item.especialidade ?? "Não informado"
-                    : item.numeroDeMatricula ?? "Não informado"}
-                </td>
-              </tr>
-            ));
+            return filteredItems.length > 0 ? (
+              filteredItems.map((item: any, index: number) => (
+                <tr key={index}>
+                  <td>
+                    {item.nome ?? "Não informado"}
+                    <Link
+                      to={`/dashboard/${typeItems}/${
+                        item.idAluno ?? item.idCurso ?? item.idProfessor
+                      }`}
+                    >
+                      <Eye size={32} weight="thin" />
+                    </Link>
+                  </td>
+                  <td>
+                    {typeItems === "curso"
+                      ? periodoCurso(item.periodo)
+                      : typeItems === "professor"
+                      ? item.especialidade ?? "Não informado"
+                      : item.numeroDeMatricula ?? "Não informado"}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <td>Nenhuma correspondência encontrada.</td>
+            );
           })()}
         </tbody>
       </table>
