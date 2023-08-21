@@ -85,6 +85,7 @@ export const StyledListagemContainer = styled.section`
 
         a{
           color: #000;
+          display: flex;
         }
       }
     }

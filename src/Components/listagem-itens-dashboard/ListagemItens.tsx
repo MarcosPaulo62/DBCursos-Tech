@@ -157,7 +157,8 @@ export default function ListagemItens({
                 <td>
                   {typeItems === "curso"
                     ? periodoCurso(item.periodo)
-                    : item.especialidade ?? "Não informado"}
+                    : typeItems === "professor" ? item.especialidade ?? "Não informado"
+                    : item.numeroDeMatricula ?? "Não informado"}
                 </td>
               </tr>
             ));

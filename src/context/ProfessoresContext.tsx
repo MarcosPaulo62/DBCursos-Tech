@@ -8,6 +8,7 @@ interface iProfessorContext {
   listaProfessoresPagination: (page: number, pageSize: number) => void;
   listaProfessorById: (id: string) => void;
   professorById: iProfessor | undefined;
+  deleteProfessorById: (id: string | undefined) => void;
 }
 
 export const ProfessoresContext = createContext({} as iProfessorContext);
@@ -76,6 +77,20 @@ export function ProfessoresProvider({ children }: iChildren) {
     setProfessorById(resposta);
   }
 
+  async function deleteProfessorById(id: string | undefined) {
+    const response = await fetch(`${apiKey}/professor/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "aplication/json",
+        Authorization: `${localStorage.getItem("token")}`,
+      },
+    });
+    if (!response.ok) {
+      console.log("Erro ao fazer requisição!");
+      return;
+    }
+  }
+
   return (
     <ProfessoresContext.Provider
       value={{
@@ -84,7 +99,8 @@ export function ProfessoresProvider({ children }: iChildren) {
         totalPaginasProf,
         listaProfessoresPagination,
         professorById,
-        listaProfessorById
+        listaProfessorById,
+        deleteProfessorById
       }}
     >
       {children}
