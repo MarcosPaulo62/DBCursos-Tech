@@ -118,10 +118,14 @@ export default function InformationCardDashboard({type, id}: InformationCardDash
             </StyledTag>
             {localStorage.getItem("cargo") === "admin" && (
               <div className="buttons">
-                <button className="editar" type="submit">
+                {/* <button className="editar" type="submit">
                   Editar
-                </button>
-                <button className="remover" type="submit" onClick={() => setShowModal(true)}>
+                </button> */}
+                <button
+                  className="remover"
+                  type="submit"
+                  onClick={() => setShowModal(true)}
+                >
                   Remover
                 </button>
               </div>
