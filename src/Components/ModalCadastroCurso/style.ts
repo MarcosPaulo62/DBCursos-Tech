@@ -18,7 +18,6 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 50vw;
-  height: 65vh;
   background-color: #e8e8e8;
   border-radius: 16px;
 `;
@@ -85,6 +84,7 @@ export const Button = styled.button`
   color: ${({theme}) => theme.color.white};
   border-radius: 16px;
   font-size: 1rem;
+  margin-top: 1rem;
   &:hover{
     background-color: ${({theme}) => theme.color.mediumBlue};;
   }
@@ -98,3 +98,26 @@ export const Actions = styled.div`
   padding-right: 1rem;
 
 `;
+export const ComboBox = styled.select`
+  all: unset;
+  width: 90%;
+  border-radius: 0.5rem;
+  border: 1px solid #504c4c;
+  padding: 1rem;
+  padding-left: 2rem;
+  font-size: 1rem;
+  font-weight: 300;
+  background-color: #fff;
+`;
+export const ComboBoxMd = styled.select`
+  all: unset;
+  border-radius: 0.5rem;
+  border: 1px solid #504c4c;
+  padding: 1rem;
+  padding-right: 2rem;
+  font-size: 1rem;
+  font-weight: 300;
+  background-color: #fff;
+  margin-left: 1.2rem;
+`;
+

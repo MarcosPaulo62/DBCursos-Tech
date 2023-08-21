@@ -1,13 +1,13 @@
-import {screen, render} from "@testing-library/react";
-import {ModalCadastro} from "./ModalCadastro";
-import {ThemeProvider} from "styled-components";
-import {ColorsTheme} from "../../styles/global";
+import { screen, render } from "@testing-library/react";
+import { ModalCadastroAluno } from "./ModalCadastroAluno";
+import { ThemeProvider } from "styled-components";
+import { ColorsTheme } from "../../styles/global";
 
 describe("Modal register tests", () => {
   test("Should render a title and a button", () => {
     render(
       <ThemeProvider theme={ColorsTheme}>
-        <ModalCadastro />
+        <ModalCadastroAluno open={true} />
       </ThemeProvider>
     );
 

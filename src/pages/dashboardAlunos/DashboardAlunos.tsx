@@ -12,7 +12,7 @@ export function DashboardAlunos() {
       <NavbarDashboard role={role ? role : ""} />
       <div className="lista-container" data-testid="listagem-itens-component">
         <ListagemItens
-          isAdmin={role == "admin" ? true : false}
+          isAdmin={role === "admin" ? true : false}
           typeItems="aluno"
         />
       </div>

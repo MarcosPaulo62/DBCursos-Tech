@@ -13,6 +13,35 @@ export function Dashboard() {
 
   return (
     <>
+<<<<<<< HEAD
+    <DashboardWrapper>
+      <NavbarDashboard role={role ? role : ""} />
+      <div className="body">
+        <h2>
+          Área do{" "}
+          {role === "aluno"
+            ? " Aluno"
+            : role === "admin"
+            ? " Administrador"
+            : " Professor"}
+        </h2>
+        <div className="elementos">
+          <div className="cards">
+            <Welcome />
+            <Link to="/dashboard/cursos">
+              <CardHome cargo="Cursos" image={curso} />
+            </Link>
+            {(role === "professor" || role === "admin") && (
+              <Link to="/dashboard/alunos">
+                <CardHome cargo="Alunos" image={aluna} />
+              </Link>
+            )}
+            {(role === "aluno" || role === "admin") && (
+              <Link to="/dashboard/professores">
+                <CardHome cargo="Professores" image={professor} />
+              </Link>
+            )}
+=======
       <DashboardWrapper>
         <NavbarDashboard role={role ? role : ""} />
         <div className="body">
@@ -35,6 +64,7 @@ export function Dashboard() {
               )}
             </div>
             <EventsDashboard />
+>>>>>>> 54ab8581a645ded46f22964bc243a9936271bfd2
           </div>
         </div>
       </DashboardWrapper>
