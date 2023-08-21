@@ -31,9 +31,7 @@ export default function Navbar() {
               Contato
             </ScrollLink>
             <button
-              onClick={() => {
-                token ? navigate("/dashboard") : navigate("/login");
-              }}
+              onClick={() => navigate("/dashboard")}
             >
               {token ? "Dashboard" : "Entrar"}
             </button>
