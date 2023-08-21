@@ -7,10 +7,10 @@ export function Login() {
   return (
     <SignUpAndLoginWrapper>
       <Link to={"/"} className="homeButton">
-        <ArrowCircleLeft size={32} />
+        <ArrowCircleLeft size={32} data-testid="arrow-icon"/>
         <span>Página Inicial</span>
       </Link>
-      <AuthenticationCard isLoginPage={true} />
+      <AuthenticationCard isLoginPage={true} data-testid="auth-card" />
     </SignUpAndLoginWrapper>
   );
 }
