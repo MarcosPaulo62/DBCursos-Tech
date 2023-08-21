@@ -1,4 +1,4 @@
-import { NavbarDashboard } from "../../Components/NavbarDashboard/NavbarDashboard";
+import { NavbarDashboard } from "../../Components/navbarDashboard/NavbarDashboard";
 import { DashboardWrapper } from "./styles";
 import { Link, useLocation } from "react-router-dom";
 import InformationCardDashboard from "../../Components/informationCardDashboard/InformationCardDashboard";

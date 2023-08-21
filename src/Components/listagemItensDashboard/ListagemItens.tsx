@@ -118,6 +118,7 @@ export default function ListagemItens({
   }
 
   return (
+<<<<<<< HEAD:src/Components/listagem-itens-dashboard/ListagemItens.tsx
     <>
       <StyledListagemContainer data-testid="lista-cursos">
         <div className="header">
@@ -133,6 +134,21 @@ export default function ListagemItens({
               onChange={(e) => setSearchValue(e.target.value)}
             />
           </div>
+=======
+    <StyledListagemContainer data-testid='lista-cursos'>
+      <div className="header">
+        <h2>{headerTitle}</h2>
+        <div>
+          {/* {isAdmin && <button>Adicionar novo</button>} */}
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder={inputPlaceholder}
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+>>>>>>> 54ab8581a645ded46f22964bc243a9936271bfd2:src/Components/listagemItensDashboard/ListagemItens.tsx
         </div>
 
         <table>
@@ -166,6 +182,7 @@ export default function ListagemItens({
                   break;
               }
 
+<<<<<<< HEAD:src/Components/listagem-itens-dashboard/ListagemItens.tsx
               return filteredItems.length > 0 ? (
                 filteredItems.map((item: any, index: number) => (
                   <tr key={index}>
@@ -194,6 +211,36 @@ export default function ListagemItens({
             })()}
           </tbody>
         </table>
+=======
+            return filteredItems.length > 0 ? (
+              filteredItems.map((item: any, index: number) => (
+                <tr key={index}>
+                  <td>
+                    {item.nome ?? "Não informado"}
+                    <Link
+                      to={`/dashboard/${typeItems}/${
+                        item.idAluno ?? item.idCurso ?? item.idProfessor
+                      }`}
+                    >
+                      <Eye size={32} weight="thin" />
+                    </Link>
+                  </td>
+                  <td>
+                    {typeItems === "curso"
+                      ? periodoCurso(item.periodo)
+                      : typeItems === "professor"
+                      ? item.especialidade ?? "Não informado"
+                      : item.numeroDeMatricula ?? "Não informado"}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <td>Nenhuma correspondência encontrada.</td>
+            );
+          })()}
+        </tbody>
+      </table>
+>>>>>>> 54ab8581a645ded46f22964bc243a9936271bfd2:src/Components/listagemItensDashboard/ListagemItens.tsx
 
         {typeItems == "aluno" ? (
           <Pagination

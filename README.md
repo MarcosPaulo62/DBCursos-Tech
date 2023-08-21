@@ -1,7 +1,11 @@
-<h1 align="center"> Padrão de README </h1>
+<h1 align="center"> Task Final | Context + Styled Components</h1>
 
 <p align="center">
-  Exemplo de README padrão para utilizarmos para explicar o projeto ou como clonar/instalar dependências.<br/>
+Tarefa avaliativa do Programa Vem Ser, 12ª Edição.
+</p>
+
+<p align="center">
+<strong>Desenvolvedores:</strong> <br>Davi Kennedy<br>Diego Domanjnko<br>Fabiola Rodrigues<br>Glauber Bispo<br>Marcos Silva
 </p>
 
 <p align="center">
@@ -11,37 +15,43 @@
 </p>
 
 <p align="center">
-  <img alt="imagem do site pronto no vercel" src="./assets/img-exemplo-site.png">
+  <img alt="imagem do site pronto no vercel" src="./src/assets/img-exemplo-site.png">
 </p>
 
 <p align="center">
-  <a href="https://ignite-todo-silk.vercel.app/" target="_blank">➡️ Acesse o deploy!</a>
+  <a href="https://dbcursos-tech.vercel.app/" target="_blank">➡️ Acesse o deploy!</a>
 </p>
 
 ## 🚀 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- Tecnologia 1
-- Tecnologia 2
-- Tecnologia 3
-- Tecnologia 4
+- TypeScript
+- React
+- Styled-components
 
 ## ⚙️ Instalação do projeto
 
-Passo-a-passo:
-
-1. Comandos necessários para executar:
-
+Instalação das dependências:
 ```
 npm i
-npm run dev
 ```
 
-> Particularidades do projeto. Dependência externa.
+Inicialização da aplicação:
+```
+npm start
+```
+
+Comando para vizualizar a cobertura de testes da aplicação:
+```
+npm run test-coverage
+```
+
 
 ## 💻 Sobre o Projeto
 
-O projeto é um Todo básico onde você pode adicionar uma nova atividade, excluir ou marcar como concluída, além de trazer dados de quantas tarefas foram criadas e quantas estão concluídas.
+A DBCursos Tech é uma plataforma educacional que pode ser acessada por alunos e professores. Nela, é possível acessar cursos, professores e/ou alunos. Também há a área do admin, que tem funções administrativas, tais como: adicionar, remover ou editar qualquer registro. 
 
-- Links do figma (caso tiver)
+<a href="https://www.figma.com/file/dcERvcVZvfxlD0HufLWlUl/DBCursos?type=design&node-id=1%3A22&mode=design&t=jBuObXNYjwQE4Fyr-1">Veja aqui</a> o projeto no Figma.
+
+[Veja aqui](https://trello.com/b/eThYVSjZ/kanban-dbcursos-tech) o Trello.

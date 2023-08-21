@@ -1,6 +1,8 @@
-import { NavbarDashboard } from "../../Components/NavbarDashboard/NavbarDashboard";
+
+import { NavbarDashboard } from "../../Components/navbarDashboard/NavbarDashboard";
+import ListagemItens from "../../Components/listagemItensDashboard/ListagemItens";
 import { DashboardWrapper } from "./styles";
-import ListagemItens from "../../Components/listagem-itens-dashboard/ListagemItens";
+
 
 export function DashboardAlunos() {
   const role = localStorage.getItem("cargo");
@@ -8,7 +10,7 @@ export function DashboardAlunos() {
   return (
     <DashboardWrapper>
       <NavbarDashboard role={role ? role : ""} />
-      <div className="lista-container">
+      <div className="lista-container" data-testid="listagem-itens-component">
         <ListagemItens
           isAdmin={role === "admin" ? true : false}
           typeItems="aluno"

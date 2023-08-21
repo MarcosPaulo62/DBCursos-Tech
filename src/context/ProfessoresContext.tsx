@@ -1,5 +1,14 @@
 import { createContext, useState } from "react";
 import { iChildren, iProfessor } from "../utils/interface";
+import { toast } from "react-toastify";
+import { API_KEY } from "../utils/API";
+
+interface iNewProfessor {
+  nome: string;
+  cpf: string;
+  especialidade:string;
+  salario: number;
+}
 
 interface iProfessorContext {
   professoresData: iProfessor[];
@@ -9,6 +18,7 @@ interface iProfessorContext {
   listaProfessorById: (id: string) => void;
   professorById: iProfessor | undefined;
   deleteProfessorById: (id: string | undefined) => void;
+  addNewProfessor: (professor: iNewProfessor) => void;
 }
 
 export const ProfessoresContext = createContext({} as iProfessorContext);
@@ -24,7 +34,7 @@ export function ProfessoresProvider({ children }: iChildren) {
   async function listaProfessores() {
     const response = await fetch(`${apiKey}/professor`, {
       headers: {
-        "Content-type": "aplication/json",
+        "Content-type": "application/json",
         Authorization: `${localStorage.getItem("token")}`,
       },
     });
@@ -63,7 +73,7 @@ export function ProfessoresProvider({ children }: iChildren) {
   async function listaProfessorById(id: string) {
     const response = await fetch(`${apiKey}/professor/${id}`, {
       headers: {
-        "Content-type": "aplication/json",
+        "Content-type": "application/json",
         Authorization: `${localStorage.getItem("token")}`,
       },
     });
@@ -81,13 +91,50 @@ export function ProfessoresProvider({ children }: iChildren) {
     const response = await fetch(`${apiKey}/professor/${id}`, {
       method: "DELETE",
       headers: {
-        "Content-type": "aplication/json",
+        "Content-type": "application/json",
         Authorization: `${localStorage.getItem("token")}`,
       },
     });
     if (!response.ok) {
       console.log("Erro ao fazer requisição!");
       return;
+    }
+  }
+
+  async function addNewProfessor(professor: iNewProfessor) {
+    try {
+      const response = await fetch(
+        `${API_KEY}//professor`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({
+            nome: professor.nome,
+            cpf: professor.cpf,
+            especialidade: professor.especialidade,
+            salario: Number(professor.salario)
+          }),
+        }
+      );
+      console.log(professor)
+
+      if (response.status === 500) {
+        toast.error("Algo inesperado aconteceu!", {
+          theme: "dark",
+          position: "top-center",
+        });
+        return;
+      }
+
+      toast.success("Cadastro realizado com sucesso!", {
+        theme: "dark",
+        position: "top-center",
+      });
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -100,7 +147,8 @@ export function ProfessoresProvider({ children }: iChildren) {
         listaProfessoresPagination,
         professorById,
         listaProfessorById,
-        deleteProfessorById
+        deleteProfessorById,
+        addNewProfessor
       }}
     >
       {children}

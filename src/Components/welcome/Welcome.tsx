@@ -11,7 +11,7 @@ export const Welcome = () => {
       break;
     case "professor":
       text =
-        "Bem-vindo à área do Professor! Aqui você pode buscar pelos alunos da instituição e fazer o adastro de novos cursos.";
+        "Bem-vindo à área do Professor! Aqui você pode buscar pelos alunos da instituição.";
       break;
     case "aluno":
       text =
