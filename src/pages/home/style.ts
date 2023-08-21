@@ -6,6 +6,7 @@ export const HeroWrapper = styled.section`
   height: 36.5625rem;
   position: relative;
   width: 100%;
+  z-index: -1;
 
   &::before {
     content: "";
@@ -15,6 +16,7 @@ export const HeroWrapper = styled.section`
     position: absolute;
     top: 0;
     width: 100%;
+    z-index: -1;
   }
 `;
 
@@ -22,19 +24,19 @@ export const HeroContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-left: 10%;
   height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  padding-left: 15%;
-  padding-top: 10%;
-  width: 100%;
+  z-index: 1;
 
   h1 {
     color: ${({theme}) => theme.color.blue};
     font-size: 4.375rem;
     font-weight: 700;
     text-transform: uppercase;
+    margin: 0;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     span {
@@ -44,7 +46,11 @@ export const HeroContent = styled.div`
     }
   }
 
-  p {
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    p {
     color: ${({theme}) => theme.color.white};
     font-size: 3rem;
 
@@ -52,6 +58,7 @@ export const HeroContent = styled.div`
       color: ${({theme}) => theme.color.blue};
       font-weight: 600;
     }
+  }
   }
 `;
 
@@ -75,9 +82,10 @@ export const RegisterSectionWrapper = styled.section`
   background-color: ${({theme}) => theme.color.blue};
   color: ${({theme}) => theme.color.white};
   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 3rem;
   gap: 3.5rem;
-  min-height: 44rem;
-  padding: 4.75rem 0 9.75rem 6rem;
 
   img {
     width: 40%;
@@ -87,10 +95,9 @@ export const RegisterSectionWrapper = styled.section`
     align-items: flex-end;
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 2rem;
     padding-top: 4rem;
     text-align: end;
-    width: 40%;
 
     h3 {
       font-size: 3rem;
@@ -98,7 +105,7 @@ export const RegisterSectionWrapper = styled.section`
     }
 
     p {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
   }
 `;
@@ -209,7 +216,8 @@ export const ButtonWrapper = styled.button`
   display: flex;
   justify-content: center;
   min-height: 2.5rem;
-  padding: 0 1.125rem;
+  font-size: 1.2rem;
+  padding: 0.5rem 2rem;
   transition: all 0.4s ease;
 
   &:hover {

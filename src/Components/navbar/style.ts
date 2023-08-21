@@ -11,7 +11,7 @@ export const NavbarWrapper = styled.nav`
     font-size: 1rem;
     text-decoration: none;
     transition: all 0.3s ease;
-    font-weight: 700;
+    font-weight: 300;
     text-transform: uppercase;
 
     &:hover {
