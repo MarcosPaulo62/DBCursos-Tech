@@ -6,6 +6,8 @@ import Home from "./pages/home/Home";
 import { DashboardAlunos } from "./pages/dashboardAlunos/DashboardAlunos";
 import { DashboardCursos } from "./pages/dashboardCursos/DashboardCursos";
 import { DashboardProfessores } from "./pages/dashboardProfessores/DashboardProfessores";
+import React from "react";
+import NotFound from "./pages/notfound/NotFound";
 
 export function Router() {
   return (
@@ -18,6 +20,7 @@ export function Router() {
         <Route path="/dashboard/alunos" element={<DashboardAlunos />} />
         <Route path="/dashboard/cursos" element={<DashboardCursos />} />
         <Route path="/dashboard/professores" element={<DashboardProfessores />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

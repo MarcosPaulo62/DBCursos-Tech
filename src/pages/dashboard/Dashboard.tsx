@@ -7,6 +7,7 @@ import aluna from "../../assets/aluna.png";
 import professor from "../../assets/professor.png";
 import curso from "../../assets/curso-online.png";
 import { Link } from "react-router-dom";
+import React from "react";
 
 export function Dashboard() {
   const role = localStorage.getItem("cargo");
@@ -14,9 +15,6 @@ export function Dashboard() {
   return (
     <>
     <DashboardWrapper>
-<<<<<<< HEAD
-      <NavbarDashboard role="admin" /> 
-=======
       <NavbarDashboard role={role ? role : ""} />
       <div className="body">
         <h2>
@@ -47,7 +45,6 @@ export function Dashboard() {
           <EventsDashboard />
         </div>
       </div>
->>>>>>> cb0e96467fa9e5caf4be900e15de362b89038765
     </DashboardWrapper>
     
     </>
