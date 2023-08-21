@@ -7,6 +7,7 @@ import aluna from "../../assets/aluna.png";
 import professor from "../../assets/professor.png";
 import curso from "../../assets/curso-online.png";
 import { Link } from "react-router-dom";
+import React from "react";
 
 export function Dashboard() {
   const role = localStorage.getItem("cargo");
