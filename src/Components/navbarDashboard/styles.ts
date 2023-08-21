@@ -16,6 +16,11 @@ export const NavbarDashboardWrapper = styled.div`
     width: 5rem;
     height: 5rem;
     margin-bottom: 1rem;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   .greeting {

@@ -1,5 +1,21 @@
 import styled from "styled-components";
 
+export const StyledInformationCardDashboardContainer = styled.div`
+    position: relative;
+
+    .voltar{
+        position: absolute;
+        top: 16px;
+        right: 32px;
+        display: flex;
+        align-items: center;
+        border-radius: 16px;
+        background-color: #E8E8E8;
+        font-size: 1.2rem;
+        font-weight: 700;
+        padding: 1rem;
+    }
+`
 
 export const StyledInformationCardDashboard = styled.div`
 
@@ -46,6 +62,7 @@ export const StyledInformationCardDashboard = styled.div`
     }
 
     .description {
+        margin-bottom: .5rem;
         font-size: 1.5rem;
         width: 34rem;
         text-align: justify;

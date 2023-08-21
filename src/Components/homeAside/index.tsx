@@ -1,5 +1,5 @@
-import { RenderCard } from "../RenderCard/RenderCard";
-import { Welcome } from "../Welcome/Welcome";
+import { RenderCard } from "../renderCard/RenderCard";
+import { Welcome } from "../welcome/Welcome";
 import { Aside } from "./style";
 
 export const HomeAside = () => {

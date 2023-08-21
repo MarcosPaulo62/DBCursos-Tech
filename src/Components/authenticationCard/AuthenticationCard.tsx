@@ -144,6 +144,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
             setIsLogin(true);
             navigate("/login");
           }}
+          data-testid='btn-header-login'
         >
           ENTRAR
         </button>
@@ -153,6 +154,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
             setIsLogin(false);
             navigate("/cadastro");
           }}
+          data-testid='btn-header-register'
         >
           CRIAR CONTA
         </button>
@@ -201,6 +203,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
             id="login"
             {...register("login")}
             placeholder="Username"
+            data-testid='input-login'
           />
           <User className="icon" size={32} />
         </div>
@@ -210,6 +213,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
             id="password"
             {...register("senha")}
             placeholder="Senha"
+            data-testid='input-password'
           />
           <Lock className="icon" size={32} />
           <div
@@ -227,6 +231,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
             id="confirm-password"
             {...register("confirmarSenha")}
             placeholder="Confirmar senha"
+            data-testid='input-confirm-password'
           />
           <Lock className="icon" size={32} />
           <div
@@ -238,7 +243,7 @@ export function AuthenticationCard({ isLoginPage }: IAuthType) {
             {showConfirmPassword ? <EyeSlash size={32} /> : <Eye size={32} />}
           </div>
         </div>
-        <button className="submit" type="submit">
+        <button className="submit" type="submit" data-testid='btn-submit'>
           {isLoading ? (
             <CircularProgress className="loading" />
           ) : isLogin ? (
