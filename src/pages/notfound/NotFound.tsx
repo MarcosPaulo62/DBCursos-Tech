@@ -4,15 +4,12 @@ import Footer from "../../Components/footer/Footer";
 import { StyledNotFoundContainer } from "./style";
 import NotFoundComponent from "../../Components/notfound/NotFound";
 
-
-
-export default function NotFound () {
-    return(
-        <StyledNotFoundContainer>
-        <Header />
-        <NotFoundComponent />
-        <Footer />
-        </StyledNotFoundContainer>
-
-    )
+export default function NotFound() {
+  return (
+    <StyledNotFoundContainer>
+      <Header />
+      <NotFoundComponent />
+      <Footer />
+    </StyledNotFoundContainer>
+  );
 }

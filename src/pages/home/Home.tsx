@@ -8,7 +8,7 @@ import {
   SectionCardsWrapper,
   SectionTitle,
 } from "./style";
-import Header from "../../Components/listagem-itens-dashboard/header/Header";
+import Header from "../../Components/header/Header";
 
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
