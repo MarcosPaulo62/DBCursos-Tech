@@ -53,3 +53,5 @@ npm run test-coverage
 A DBCursos Tech é uma plataforma educacional que pode ser acessada por alunos e professores. Nela, é possível acessar cursos, professores e/ou alunos. Também há a área do admin, que tem funções administrativas, tais como: adicionar, remover ou editar qualquer registro. 
 
 <a href="https://www.figma.com/file/dcERvcVZvfxlD0HufLWlUl/DBCursos?type=design&node-id=1%3A22&mode=design&t=jBuObXNYjwQE4Fyr-1">Veja aqui</a> o projeto no Figma.
+
+[VEja aqui](https://trello.com/b/eThYVSjZ/kanban-dbcursos-tech) o Trello.
