@@ -1,4 +1,4 @@
-import { CardHome } from "../../Components/cardHome/CardHome";
+import { CardHome } from "../../Components/CardHome/CardHome";
 import { NavbarDashboard } from "../../Components/navbarDashboard/NavbarDashboard";
 import { Welcome } from "../../Components/welcome/Welcome";
 import EventsDashboard from "../../Components/eventsDashboard/EventsDashboard";
@@ -42,6 +42,7 @@ export function Dashboard() {
               )}
             </div>
           </div>
+          <EventsDashboard></EventsDashboard>
         </div>
       </DashboardWrapper>
     </>
